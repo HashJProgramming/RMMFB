@@ -27,7 +27,7 @@
                         <li class="nav-item"><a class="nav-link link-dark" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="rents.php" title="Here you can Monitor the rental transactions.">Rentals</a></li>
                         <li class="nav-item"><a class="nav-link link-dark" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="customers.php" title="Here you can manage and view customers.">Customers</a></li>
                         <li class="nav-item"><a class="nav-link link-dark" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="account.php" title="Here you can manage and view customers.">My Account</a></li>
-                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="login.php" title="Here you can logout your acccount.">Logout</a>
+                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="functions/logout.php" title="Here you can logout your acccount.">Logout</a>
                 </div>
             </div>
         </nav>

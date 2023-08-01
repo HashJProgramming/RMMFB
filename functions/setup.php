@@ -37,9 +37,9 @@
               item VARCHAR(255),
               price DECIMAL(10,2),
               borrow DATE,
-              return DATE,
+              returned DATE,
               penalty DECIMAL(10,2),
-              condition VARCHAR(255),
+              conditions VARCHAR(255),
               status VARCHAR(255),
               FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -49,7 +49,7 @@
         $db->exec("
           CREATE TABLE IF NOT EXISTS logs (
             id INT PRIMARY KEY AUTO_INCREMENT,
-            user_id int,
+            user_id INT,
             logs TEXT,
             type TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -67,7 +67,6 @@
             $stmt = $db->prepare("INSERT INTO `users` (`username`, `password`) VALUES (:username, :password)");
             $stmt->bindValue(':username', 'admin');
             $stmt->bindValue(':password', '$2y$10$WgL2d2fzi6IiGiTfXvdBluTLlMroU8zBtIcRut7SzOB6j9i/LbA4K');
-            $stmt->bindValue(':level', 0);
             $stmt->execute();
         }
         
