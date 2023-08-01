@@ -11,5 +11,5 @@ RMMFB - Rental Management and Monitoring for a Fashion Boutique (Web Application
 | PHP             | 8.2.4                               |
 | phpMyAdmin      | 5.2.1 (up to date)                   |
 
-![alt text](https://github.com/HashJProgramming/RMMFB/blob/Main/screenshots/1.png)
-![alt text](https://github.com/HashJProgramming/RMMFB/blob/Main/screenshots/2.png)
+![alt text](https://github.com/HashJProgramming/RMMFB/blob/Main/screenshot/1.png)
+![alt text](https://github.com/HashJProgramming/RMMFB/blob/Main/screenshot/2.png)
