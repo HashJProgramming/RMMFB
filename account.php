@@ -1,3 +1,6 @@
+<?php
+include_once 'functions/view/datatable.php';
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
 
@@ -46,26 +49,14 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Process</th>
-                                    <th>Status</th>
                                     <th>Message</th>
                                     <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>0</td>
-                                    <td>Login</td>
-                                    <td>Success</td>
-                                    <td>Granted</td>
-                                    <td>2008/11/28</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Create Customer</td>
-                                    <td>Success</td>
-                                    <td>Customer Saved</td>
-                                    <td>2009/10/09</td>
-                                </tr>
+                                <?php
+                                    user_logs();
+                                ?>
                             </tbody>
                         </table>
                     </div>
