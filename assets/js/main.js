@@ -26,7 +26,7 @@ $(document).ready(function() {
                 className: 'btn btn-primary',
                 text: '<i class="fa fa-print"></i> Print',
                 title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
-                autoPrint: false,
+                autoPrint: true,
                 exportOptions: {
                     columns: ':visible',
                 },

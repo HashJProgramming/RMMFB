@@ -71,12 +71,13 @@ include_once 'functions/view/datatable.php';
                     <h4 class="modal-title">Change Password</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="my-1"><label class="form-label">Current Password</label><input class="form-control" type="text" required="" pattern="^(?!\s).*$"></div>
-                        <div class="my-1"><label class="form-label">New Password</label><input class="form-control" type="text" pattern="^(?!\s).*$" required=""></div>
-                    </form>
+                    <form action="functions/change-password.php" method="post">
+                        <div class="my-1"><label class="form-label">Current Password</label><input name="current" class="form-control" type="password" required="" pattern="^(?!\s).*$"></div>
+                        <div class="my-1"><label class="form-label">New Password</label><input name="new" class="form-control" type="password" pattern="^(?!\s).*$" required=""></div>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
