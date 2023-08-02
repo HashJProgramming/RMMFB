@@ -7,7 +7,7 @@ include_once 'functions/view/datatable.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Blank - RMMFBS</title>
+    <title>My Account - RMMFBS</title>
     <meta name="description" content="Rental Management and Monitoring for a Fashion Boutique">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/boutique.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/boutique.png">
