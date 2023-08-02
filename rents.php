@@ -1,5 +1,6 @@
 <?php
 include_once 'functions/authentication.php';
+include_once 'functions/view/datatable.php';
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
@@ -95,20 +96,19 @@ include_once 'functions/authentication.php';
                     <h4 class="modal-title">Create Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/create-transaction.php" method="post">
                         <div style="margin-top: 5px;"><label class="form-label">Customer</label><select class="form-select" name="id">
-                                <optgroup label="This is a group">
-                                    <option value="12" selected="">This is item 1</option>
-                                    <option value="13">This is item 2</option>
-                                    <option value="14">This is item 3</option>
+                                <optgroup label="SELECT Customer">
+                                <?php customers() ?>
                                 </optgroup>
                             </select></div>
                         <div style="margin-top: 5px;"><label class="form-label">Item</label><input class="form-control" type="text" placeholder="Item" name="item" required="" pattern="^(?!\s).*$"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" placeholder="Price" name="price" required="" value="0"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@ include_once 'functions/authentication.php';
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="confirm">
+    <div class="modal fade" role="dialog" tabindex="-1" id="remove">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

@@ -89,8 +89,16 @@ $(document).ready(function() {
                 $('input[name="date"]').val(date);
             });
 
-          } else if (currentPath === "/list") {
-            console.log("The URL is /list");
+          } else if (currentPath === "/RMMFB/staff.php") {
+            $('a[data-bs-target="#update"]').on('click', function() {
+                var id = $(this).data('id');
+                var username = $(this).data('username');
+                console.log(id, username);
+
+                $('input[name="data_id"]').val(id);
+                $('input[name="username"]').val(username);
+
+            });
           } else {
             console.log("The URL is neither /customer nor /list");
           }
