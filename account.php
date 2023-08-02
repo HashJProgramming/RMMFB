@@ -1,5 +1,6 @@
 <?php
 include_once 'functions/view/datatable.php';
+include_once 'functions/authentication.php';
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
