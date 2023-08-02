@@ -1,36 +1,13 @@
 ## RMMFB - Rental Management and Monitoring for a Fashion Boutique (Web Application)
-| Sales Monitoring                  |
-|-----------------------------------|
-| - View Transactions Sales         |
-| - Generate Report (EXCEL, PDF, PRINT) |
 
-| Rental Management & Monitoring     |
-|------------------------------------|
-| - View Unreturned Transactions    |
-| - Create Transactions            |
-| - Update Transaction             |
-| - Remove Transaction             |
-| - Generate Report (EXCEL, PDF, PRINT) |
-
-| User Monitoring - (Administrator & Staff)✅ |
-|-------------------------------------------|
-| - Activity Logs✅                        |
-| - Generate Report (EXCEL, PDF, PRINT)✅  |
-
-| Users Management - (Staff & Customer)✅   |
-|-------------------------------------------|
-| - Create User✅                         |
-| - Update User✅                         |
-| - Remove User✅                         |
-| - Generate Report (EXCEL, PDF, PRINT)✅  |
-
-| Inventory Management ✅                  |
-|-------------------------------------------|
-| - Item Stock In✅                      |
-| - Item Stock Out✅                     |
-| - Update Item✅                        |
-| - Remove Item✅                        |
-| - Generate Report (EXCEL, PDF, PRINT)✅  |
+|                                          **System Functionality**                                         | 20% | 40% | 60% | 80% | 100% |
+|:---------------------------------------------------------------------------------------------------------:|-----|-----|-----|-----|------|
+| Users Management (Staff & Customer) - View Users - Create User - Update User - Remove User                | ✅   | ✅   | ✅   | ✅   | ⭐    |
+| Inventory Management - View Items - Add Item - Update Item - Remove Item - Item Stock In - Item Stock Out | ✅   | ✅   | ✅   | ✅   | ⭐    |
+| Rental Monitoring - View Rentals not yet returned                                                         |     |     |     |     |      |
+| Sales Monitoring - View Transactions / Sales                                                              |     |     |     |     |      |
+| Users Activity Monitoring - User Activity Log (ex: Inventory)                                             | ✅   | ✅   | ✅   | ✅   | ⭐    |
+| Generate Reports (EXCEL, PDF, PRINT)                                                                      | ✅   | ✅   | ✅   | ✅   | ⭐    |
 
 
 ## XAMPP System Specifications
