@@ -34,7 +34,7 @@
             CREATE TABLE IF NOT EXISTS inventory (
               id INT PRIMARY KEY AUTO_INCREMENT,
               name VARCHAR(255),
-              descriptions VARCHAR(255),
+              description VARCHAR(255),
               qty INT,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )

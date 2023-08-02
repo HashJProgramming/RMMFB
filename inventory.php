@@ -54,38 +54,9 @@ include_once 'functions/view/nav-bar.php';
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#1</td>
-                                    <td>Downy</td>
-                                    <td>150</td>
-                                    <td>10</td>
-                                    <td>2008/11/29</td>
-                                    <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>#1</td>
-                                    <td>Downy</td>
-                                    <td>150</td>
-                                    <td>10</td>
-                                    <td>2008/11/29</td>
-                                    <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>#1</td>
-                                    <td>Downy</td>
-                                    <td>150</td>
-                                    <td>10</td>
-                                    <td>2008/11/29</td>
-                                    <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>#1</td>
-                                    <td>Downy</td>
-                                    <td>150</td>
-                                    <td>10</td>
-                                    <td>2008/11/29</td>
-                                    <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
+                                <?php
+                                item_list();
+                                ?>
                             </tbody>
                             <tfoot>
                                 <tr></tr>
@@ -103,12 +74,14 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Add Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/item-create.php" method="post">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required=""></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -119,12 +92,13 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Update Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/item-update.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
-                    </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -135,11 +109,12 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Item Stock In</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/item-stock-in.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required=""></div>
-                    </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -150,11 +125,12 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Item Stock Out</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/item-stock-out.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required=""></div>
-                    </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
