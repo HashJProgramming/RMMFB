@@ -1,5 +1,7 @@
+
 <?php
 include_once 'functions/authentication.php';
+include_once 'functions/view/datatable.php';
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
@@ -57,24 +59,9 @@ include_once 'functions/authentication.php';
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>Email</td>
-                                    <td>Date</td>
-                                    <td>Date</td>
-                                    <td class="text-center"><a data-bs-toggle="tooltip" data-bss-tooltip="" class="mx-1" href="profile.php" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" title="Here you can update the customer Information."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" title="Here you can remove the customer."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>Email</td>
-                                    <td>Date</td>
-                                    <td>Date</td>
-                                    <td class="text-center"><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="profile.php" data-bs-target="#update" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" title="Here you can update the customer Information."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" title="Here you can remove the customer."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
+                               <?php
+                                customer_list();
+                               ?>
                             </tbody>
                         </table>
                     </div>
@@ -110,6 +97,7 @@ include_once 'functions/authentication.php';
                 </div>
                 <div class="modal-body">
                     <form action="functions/customer-update.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" pattern="^(?!\s).*$" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" pattern="^(?!\s).*$" required=""></div>
@@ -122,7 +110,7 @@ include_once 'functions/authentication.php';
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="confirm">
+    <div class="modal fade" role="dialog" tabindex="-1" id="remove">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -131,7 +119,10 @@ include_once 'functions/authentication.php';
                 <div class="modal-body">
                     <p>Are you sure you want to remove this?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <form action="functions/customer-remove.php" method="post">
+                    <input type="hidden" name="data_id">
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
             </div>
         </div>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

@@ -24,6 +24,7 @@
               address VARCHAR(255),
               phone VARCHAR(255),
               email VARCHAR(255),
+              birthdate DATE,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         ");

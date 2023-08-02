@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+        const currentPath = window.location.pathname;
         const urlParams = new URLSearchParams(window.location.search);
         const type = urlParams.get('type');
         const message = urlParams.get('message');
@@ -69,6 +69,40 @@ $(document).ready(function() {
                 'error'
               )
         }
+
+
+        if (currentPath === "/RMMFB/customers.php") {
+            $('a[data-bs-target="#update"]').on('click', function() {
+                var id = $(this).data('id');
+                var fullname = $(this).data('fullname');
+                var address = $(this).data('address');
+                var phone = $(this).data('phone');
+                var email = $(this).data('email');
+                var date = $(this).data('birthdate');
+
+            //    console.log(id, fullname, address, phone, email, date);
+                $('input[name="data_id"]').val(id);
+                $('input[name="name"]').val(fullname);
+                $('input[name="address"]').val(address);
+                $('input[name="phone"]').val(phone);
+                $('input[name="email"]').val(email);
+                $('input[name="date"]').val(date);
+            });
+
+          } else if (currentPath === "/list") {
+            console.log("The URL is /list");
+          } else {
+            console.log("The URL is neither /customer nor /list");
+          }
+          
+
+
+        $('a[data-bs-target="#remove"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
+
 
 } );
 

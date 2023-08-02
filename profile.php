@@ -2,7 +2,7 @@
 include_once 'functions/authentication.php';
 ?>
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+<html data-bs-theme="light" lang="en" id="bg-animation">
 
 <head>
     <meta charset="utf-8">
