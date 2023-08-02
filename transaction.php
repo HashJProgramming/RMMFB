@@ -28,58 +28,70 @@ include_once 'functions/view/nav-bar.php';
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav mx-auto">
                     <?php navbar(); ?>
-                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="functions/logout.php" title="Here you can logout your acccount.">Logout</a>
+                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="login.html" title="Here you can logout your acccount.">Logout</a>
                 </div>
             </div>
         </nav>
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-dark mb-0">Rental Management</h3><button class="btn btn-dark btn-sm d-none d-sm-inline-block" data-bs-toggle="modal" data-bss-tooltip="" data-bs-placement="left" type="button" data-bs-target="#create" title="Here you can create new transaction."><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Transaction</button>
+                <h3 class="text-dark mb-0">Transaction</h3><button class="btn btn-dark btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#create" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button>
             </div>
             <div class="card shadow my-5">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Rental List</p>
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-primary m-0 fw-bold">Transaction Information</p>
+                        </div>
+                        <div class="col text-end"><button class="btn btn-danger mx-2" type="button" data-bs-target="#confirm" data-bs-toggle="modal">Cancel</button><button class="btn btn-primary" type="button" data-bs-target="#proceed" data-bs-toggle="modal">Proceed</button></div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                        <table class="table table-hover my-0" id="dataTable">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="first_name"><strong>Fullname</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name" readonly=""></div>
+                            </div>
+                        </div>
+                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" readonly=""></div>
+                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Phone</strong></label><input class="form-control" type="text" placeholder="Contact" name="address" readonly=""></div>
+                    </form>
+                </div>
+            </div>
+            <div class="card shadow my-5">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">Items</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                        <table class="table table-striped my-0" id="dataTable">
                             <thead>
                                 <tr>
-                                    <th>Customer</th>
+                                    <th>ID #</th>
                                     <th>Item</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Borrowed Date</th>
-                                    <th>Returned Date</th>
-                                    <th>Rent Price</th>
-                                    <th>Status</th>
+                                    <th>Qty</th>
+                                    <th>Return Date</th>
                                     <th class="text-center">Option</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                    <td>Gown</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2008/11/28 - 2008/11/29</td>
-                                    <td>2008/11/28</td>
-                                    <td>$162,700</td>
-                                    <td>Not yet returned</td>
-                                    <td class="text-center"><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" title="Here you can update the transaction status." href="#" data-bs-target="#return"><i class="far fa-check-circle" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" title="Here you can update the transaction details."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" title="Here you can remove the transaction."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
+                                    <td>#1</td>
+                                    <td>Downy</td>
+                                    <td>1</td>
+                                    <td>2008/11/29</td>
+                                    <td class="text-center"><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
                                 </tr>
-                                <tr class="table-warning">
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                    <td>Shirt</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2009/10/09</td>
-                                    <td>2009/10/09</td>
-                                    <td>$1,200,000</td>
-                                    <td>1 Day Late</td>
-                                    <td class="text-center"><a data-bs-toggle="tooltip" data-bss-tooltip="" class="mx-1" title="Here you can update the transaction status." href="#"><i class="far fa-check-circle" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" title="Here you can update the transaction details."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" title="Here you can remove the transaction."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
+                                <tr>
+                                    <td>#2</td>
+                                    <td>Tide Powder</td>
+                                    <td>1</td>
+                                    <td>2008/11/28</td>
+                                    <td class="text-center"><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -90,22 +102,23 @@ include_once 'functions/view/nav-bar.php';
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Create Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    <h4 class="modal-title">Add Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="functions/create-transaction.php" method="post">
-                        <div style="margin-top: 5px;"><label class="form-label">Customer</label><select class="form-select" name="id">
-                                <optgroup label="SELECT Customer">
-                                <?php customers() ?>
+                    <form>
+                        <div style="margin-top: 5px;"><label class="form-label">Item</label><select class="form-select" name="item">
+                                <optgroup label="This is a group">
+                                    <option value="12" selected="">This is item 1</option>
+                                    <option value="13">This is item 2</option>
+                                    <option value="14">This is item 3</option>
                                 </optgroup>
                             </select></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Item</label><input class="form-control" type="text" placeholder="Item" name="item" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Quantity</label><input class="form-control" type="number" placeholder="Price" name="qty" required="" value="0"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" placeholder="Price" name="price" required="" value="0"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
-                    
+                    </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
-                </form>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
             </div>
         </div>
     </div>
@@ -126,37 +139,27 @@ include_once 'functions/view/nav-bar.php';
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="remove">
+    <div class="modal fade" role="dialog" tabindex="-1" id="cancel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Confirmation</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    <h4 class="modal-title">Cancelation</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to remove this?</p>
+                    <p>Are you sure you want to cancel this transaction?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Cancel</button></div>
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="return">
+    <div class="modal fade" role="dialog" tabindex="-1" id="proceed">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Return Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    <h4 class="modal-title">Proceed Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div style="margin-top: 5px;"><label class="form-label">Item Condition</label><select class="form-select" required="">
-                                <optgroup label="Conditions">
-                                    <option value="1" selected="">Good Condition</option>
-                                    <option value="2">Bad Condition</option>
-                                    <option value="3">Very Bad Condition</option>
-                                    <option value="4">Missing</option>
-                                </optgroup>
-                            </select></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Penalty</label><input class="form-control" type="number" name="penalty" value="0" required=""></div>
-                    </form>
+                    <p>Are you sure you want to proceed this transaction?</p>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
             </div>

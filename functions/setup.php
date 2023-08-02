@@ -45,7 +45,11 @@
               id INT PRIMARY KEY AUTO_INCREMENT,
               item_id INT,
               qty INT,
-              created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+              price DECIMAL(10,2),
+              returned DATE,
+              penalty DECIMAL(10,2),
+              conditions VARCHAR(255),
+              created_at DATE DEFAULT CURRENT_TIMESTAMP,
               FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE
             )
         ");
@@ -54,12 +58,10 @@
             CREATE TABLE IF NOT EXISTS transactions (
               id INT PRIMARY KEY AUTO_INCREMENT,
               customer_id int,
-              price DECIMAL(10,2),
-              returned DATE,
-              penalty DECIMAL(10,2),
-              conditions VARCHAR(255),
+              user_id int,
               status VARCHAR(255),
               FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
+              FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
               created_at DATE DEFAULT CURRENT_TIMESTAMP
             )
         ");
