@@ -15,7 +15,7 @@ if ($user && password_verify($password, $user['password'])) {
 
     session_start();
     $_SESSION['username'] = $username;
-    $_SESSION['level'] = $user['level'];
+    $_SESSION['type'] = $user['type'];
     $_SESSION['id'] = $user['id'];
     
     generate_logs('Login', $username.'| Logged in');

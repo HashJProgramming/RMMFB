@@ -28,7 +28,7 @@ include_once 'functions/view/nav-bar.php';
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav mx-auto">
                     <?php navbar(); ?>
-                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="login.html" title="Here you can logout your acccount.">Logout</a>
+                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="functions/logout.php" title="Here you can logout your acccount.">Logout</a>
                 </div>
             </div>
         </nav>
