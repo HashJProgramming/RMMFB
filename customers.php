@@ -89,15 +89,16 @@ include_once 'functions/authentication.php';
                     <h4 class="modal-title">Create Customer</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div style="margin-top: 5px;"><label class="form-label">Fullname</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="item" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="item" required="" pattern="[0-9]+" minlength="11" maxlength="11"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="item" required=""></div>
+                    <form action="functions/customer-create.php" method="post">
+                        <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="email" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -108,15 +109,16 @@ include_once 'functions/authentication.php';
                     <h4 class="modal-title">Update Customer</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div style="margin-top: 5px;"><label class="form-label">Fullname</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="item" pattern="^(?!\s).*$" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="item" pattern="^(?!\s).*$" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="item" required=""></div>
+                    <form action="functions/customer-update.php" method="post">
+                        <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" pattern="^(?!\s).*$" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" pattern="^(?!\s).*$" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="email" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
-                    </form>
+                   
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>

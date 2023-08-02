@@ -24,8 +24,6 @@
               address VARCHAR(255),
               phone VARCHAR(255),
               email VARCHAR(255),
-              user_id int,
-              FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         ");
