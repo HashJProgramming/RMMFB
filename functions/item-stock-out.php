@@ -20,7 +20,7 @@ if ($qty > $row['qty']) {
     exit();
 }
 
-$stock = $qty - $row['qty'];
+$stock = $row['qty'] - $qty;
 
 $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
 $statement = $db->prepare($sql);

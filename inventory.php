@@ -143,7 +143,10 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <p>Are you sure you want to remove this item?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <form action="functions/item-remove.php" method="post">
+                    <input type="hidden" name="data_id">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
             </div>
         </div>
     </div>
