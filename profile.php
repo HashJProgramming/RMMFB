@@ -22,7 +22,7 @@ include_once 'functions/view/nav-bar.php';
 
 <body id="page-top">
     <div id="content">
-    <nav class="navbar navbar-expand-md shadow navbar-light">
+    <nav class="navbar navbar-expand-lg mb-4 shadow navbar-light">
             <div class="container-fluid"><img src="assets/img/boutique.png" width="60em"><a class="navbar-brand d-flex align-items-center" href="/"><span>RMMFB</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div id="navcol-1" class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">

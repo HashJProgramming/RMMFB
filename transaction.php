@@ -23,7 +23,7 @@ include_once 'functions/view/nav-bar.php';
 
 <body id="page-top">
     <div id="content">
-    <nav class="navbar navbar-expand-md shadow navbar-light">
+    <nav class="navbar navbar-expand-lg mb-4 shadow navbar-light">
             <div class="container-fluid"><img src="assets/img/boutique.png" width="60em"><a class="navbar-brand d-flex align-items-center" href="/"><span>RMMFB</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div id="navcol-1" class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
@@ -35,7 +35,7 @@ include_once 'functions/view/nav-bar.php';
         </nav>
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-dark mb-0">Transaction</h3><button class="btn btn-dark btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#create" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button>
+                <h3 class="text-dark mb-0">Transaction</h3><button class="btn btn-dark btn-sm" type="button" data-bs-target="#create" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button>
             </div>
             <div class="card shadow my-5">
                 <div class="card-header py-3">
