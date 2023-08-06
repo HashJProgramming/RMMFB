@@ -1,25 +1,37 @@
 <?php
 include_once 'connection.php';
+session_start();
+try {
+    $customer_id = $_POST['id'];
+    $user_id = $_SESSION['id'];
 
-$id = $_POST['id'];
-$item = $_POST['item'];
-$price = $_POST['price'];
-$returned = $_POST['date'];
-$returned_timestamp = strtotime($returned);
-$current_timestamp = time();
 
-if ($returned_timestamp < $current_timestamp) {
-    header('Location: ../rents.php?type=Error&message= Return date must be greater than current date');
-} 
+    $sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 'Pending'";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+    $transaction = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql = "INSERT INTO transactions (customer_id, item, price, returned) VALUES (:customer_id, :item, :price, :returned)";
-$stmt = $db->prepare($sql);
-$stmt->bindParam(':customer_id', $id);
-$stmt->bindParam(':item', $item);
-$stmt->bindParam(':price', $price);
-$stmt->bindParam(':returned', $returned);
-$stmt->execute();
+    if ($transaction) {
+        header('Location: ../transaction.php?type=error&message=You have a pending transaction');
+        exit();
+    }
 
-generate_logs('Adding Transaction', $id.'| New transaction was added');
-header('Location: ../rents.php?type=success&message=New transaction was added successfully');
+    $sql = "SELECT * FROM customers WHERE id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':id', $customer_id);
+    $stmt->execute();
+    $customer = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $sql = "INSERT INTO transactions (customer_id, user_id, status) VALUES (:customer_id, :user_id, 'Pending')";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':customer_id', $customer_id);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+
+    generate_logs('Adding Transaction', $customer['fullname'].' | New transaction was added');
+    header('Location: ../transaction.php?type=success&message=New transaction was added successfully');
+} catch (\Throwable $th) {
+    generate_logs('Adding Transaction', $th);
+}
 ?>

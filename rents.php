@@ -23,12 +23,13 @@ include_once 'functions/view/nav-bar.php';
 
 <body id="page-top">
     <div id="content">
-        <nav class="navbar navbar-expand shadow mb-4 topbar static-top navbar-light" id="nav-animation">
+    <nav class="navbar navbar-expand-md shadow navbar-light">
             <div class="container-fluid"><img src="assets/img/boutique.png" width="60em"><a class="navbar-brand d-flex align-items-center" href="/"><span>RMMFB</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
+                <div id="navcol-1" class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
-                    <?php navbar(); ?>
-                    </ul><a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="functions/logout.php" title="Here you can logout your acccount.">Logout</a>
+                        <?php navbar(); ?>
+                    </ul>
+                    <a class="btn btn-light shadow" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left" href="functions/logout.php" title="Here you can logout your acccount.">Logout</a>
                 </div>
             </div>
         </nav>
@@ -94,15 +95,12 @@ include_once 'functions/view/nav-bar.php';
                 </div>
                 <div class="modal-body">
                     <form action="functions/create-transaction.php" method="post">
-                        <div style="margin-top: 5px;"><label class="form-label">Customer</label><select class="form-select" name="id">
+                        <div style="margin-top: 5px;"><label class="form-label">Customer</label>
+                        <select class="form-select" name="id">
                                 <optgroup label="SELECT Customer">
                                 <?php customers() ?>
                                 </optgroup>
                             </select></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Item</label><input class="form-control" type="text" placeholder="Item" name="item" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" placeholder="Price" name="price" required="" value="0"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
-                    
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
