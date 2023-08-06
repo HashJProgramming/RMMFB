@@ -105,3 +105,44 @@ function item_list(){
     <?php
     }
 }
+
+function items(){
+    global $db;
+    $sql = 'SELECT * FROM inventory ORDER BY name ASC';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    $select = false;
+    foreach ($results as $row) {
+        ?>
+        <!-- if qty is 0 -->
+        <?php if ($row['qty'] > 0) { ?>
+            <option value="<?php echo $row['id'] ?>" <?php if (!$select) { echo 'selected'; $select = true; } ?>><?php echo $row['name'] ?> | Qty: <?php echo $row['qty'] ?></option>         
+        <?php
+        }
+    }
+}
+
+function transaction_item_list($id){
+    global $db;
+    $sql = 'SELECT t.id, i.name, t.qty, t.price, t.returned,  t.item_id
+    FROM inventory i 
+    INNER JOIN rentals t ON i.id = t.item_id WHERE t.transact_id = :id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+
+    foreach ($results as $row) {
+        ?>
+        <tr>
+            <td><?php echo $row['id'] ?></td>
+            <td><?php echo $row['name'] ?></td>
+            <td><?php echo $row['qty'] ?></td>
+            <td><?php echo $row['price'] ?></td>
+            <td><?php echo $row['returned'] ?></td>
+            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>" data-date="<?php echo $row['returned'] ?>"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
+        </tr>
+    <?php
+    }
+}

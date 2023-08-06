@@ -37,6 +37,36 @@ include_once 'functions/view/nav-bar.php';
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
                 <h3 class="text-dark mb-0">Rental Management</h3><button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bss-tooltip="" data-bs-placement="left" type="button" data-bs-target="#create" title="Here you can create new transaction."><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Transaction</button>
             </div>
+
+            <div class="row">
+                <div class="col-md-6 col-xl-3 mb-4">
+                    <div class="card shadow border-start-success py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col me-2">
+                                    <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TOTAL RENTS</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>5</span></div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 mb-4">
+                    <div class="card shadow border-start-warmning py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col me-2">
+                                    <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL LATE</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>2</span></div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card shadow my-5">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Rental List</p>
@@ -94,7 +124,7 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Create Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="functions/create-transaction.php" method="post">
+                    <form action="functions/transaction-create.php" method="post">
                         <div style="margin-top: 5px;"><label class="form-label">Customer</label>
                         <select class="form-select" name="id">
                                 <optgroup label="SELECT Customer">

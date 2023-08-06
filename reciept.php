@@ -1,5 +1,51 @@
 <?php
 include_once 'functions/authentication.php';
+include_once 'functions/connection.php';
+$id = $_GET['id'];
+
+$sql = "SELECT SUM(r.price) AS total, c.fullname 
+FROM transactions t
+JOIN rentals r ON t.id = r.transact_id
+JOIN customers c ON t.customer_id = c.id
+WHERE t.id = :id";
+$statement = $db->prepare($sql);
+$statement->bindParam(':id', $id);
+$statement->execute();
+$result = $statement->fetch();
+
+$total = $result['total'];
+$customer = $result['fullname'];
+
+function getItems(){
+    global $id;
+    global $db;
+    $sql = "SELECT c.fullname, r.price, r.returned, i.name, r.created_at
+    FROM transactions t
+    JOIN customers c ON t.customer_id = c.id
+    JOIN rentals r ON t.id = r.transact_id
+    JOIN inventory i ON r.item_id = i.id
+    WHERE t.id = :id";
+    $statement = $db->prepare($sql);
+    $statement->bindParam(':id', $id);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    foreach($items as $row){
+        $startDateObj = new DateTime($row['created_at']);
+        $endDateObj = new DateTime($row['returned']);
+        $interval = $startDateObj->diff($endDateObj);
+        $days = $interval->days;
+        ?>
+            <tr class="font-monospace" style="font-size: 10px;">
+                <td class="font-monospace" style="font-size: 10px;">ITEM:&nbsp;<strong><?php echo $row['name'] ?></strong></td>
+                <td class="font-monospace text-end" style="font-size: 10px;"></td>
+                <td class="font-monospace text-center" style="font-size: 10px;"><strong><?php echo $row['created_at'] ?> - <?php echo $row['returned'] ?> |</strong>&nbsp;<?php echo $days ?> DAYS</td>
+                <td class="font-monospace text-end" style="font-size: 10px;"><strong>₱<?php echo $row['price'] ?></strong></td>
+            </tr>
+        <?php
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -18,12 +64,17 @@ include_once 'functions/authentication.php';
     <link rel="stylesheet" href="assets/css/Nunito.css">
 </head>
 
-<body>
+<body onload="printPageAndRedirect()">
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-center" style="color: var(--bs-gray-900);font-size: 13px;"><img src="assets/img/boutique.png" width="40">&nbsp;Fashion Boutique<br><span style="font-weight: normal !important;">Phone 000 - 0000 - 0000</span><br><span style="font-weight: normal !important;">TRN 000 000 000 000 000</span><br><span style="font-weight: normal !important;">Street, Barangay, Pagadian City</span></th>
+                    <th class="font-monospace text-center" style="color: var(--bs-gray-900);font-size: 13px;">
+                    <img src="assets/img/boutique.png" width="40">&nbsp;Fashion Boutique<br>
+                    <span style="font-weight: normal !important;">Cabera Street St. Barangay Balangasan, Pagadian City</span><br>
+                    <span style="font-weight: normal !important;">Phone (+63) 970-081-2044</span><br>
+                    <span style="font-weight: normal !important;">TRN 000 000 000 000 000</span><br>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -36,57 +87,44 @@ include_once 'functions/authentication.php';
         <table class="table table-borderless">
             <thead>
                 <tr>
-                    <th class="text-center" style="font-size: 10px;">Renting Reciept</th>
+                    <th class="font-monospace text-center" style="font-size: 10px;">Rental Reciept</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr></tr>
-                <tr></tr>
+            <tbody class="font-monospace">
+                <tr class="font-monospace"></tr>
+                <tr class="font-monospace"></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive font-monospace">
+        <table class="table table-borderless">
+            <thead class="font-monospace">
+                <tr class="font-monospace">
+                    <th class="font-monospace" style="font-size: 10px;"><span style="font-weight: normal !important;">CUSTOMER: <strong><?php echo $customer; ?></strong></span></th>
+                    <th class="font-monospace text-end" style="font-size: 10px;"></th>
+                    <th class="font-monospace text-end" style="font-size: 10px;"></th>
+                    <th class="font-monospace text-end" style="font-size: 10px;">INVOICE #<?php echo $_GET['id'] ?></th>
+                </tr>
+            </thead>
+            <tbody class="font-monospace">
+                <?php getItems() ?>
             </tbody>
         </table>
     </div>
     <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                    <th style="font-size: 10px;"><span style="font-weight: normal !important;">CUSTOMER</span></th>
-                    <th class="text-end" style="font-size: 10px;"></th>
-                    <th class="text-end" style="font-size: 10px;"></th>
-                    <th class="text-end" style="font-size: 10px;">INVOICE #123123123</th>
+            <thead class="font-monospace">
+                <tr class="font-monospace">
+                    <th class="font-monospace text-end"><strong>TOTAL</strong>&nbsp;<strong>₱<?php echo $total; ?></strong></th>
                 </tr>
             </thead>
             <tbody>
-                <tr style="font-size: 10px;">
-                    <td style="font-size: 10px;">TRN 000 000 000 000 000</td>
-                    <td class="text-end" style="font-size: 10px;"></td>
-                    <td class="text-end" style="font-size: 10px;"></td>
-                    <td class="text-end" style="font-size: 10px;"><strong>DATE: 8/2/2023</strong>2</td>
-                </tr>
-                <tr style="font-size: 10px;">
-                    <td style="font-size: 10px;">ITEM</td>
-                    <td class="text-end" style="font-size: 10px;"></td>
-                    <td class="text-end" style="font-size: 10px;"><strong>Super Gown</strong></td>
-                    <td class="text-end" style="font-size: 10px;"><strong>₱500</strong></td>
-                </tr>
-                <tr style="font-size: 10px;">
-                    <td style="font-size: 10px;">RENT</td>
-                    <td class="text-end" style="font-size: 10px;"></td>
-                    <td class="text-end" style="font-size: 10px;"><strong>8/2/2023 - 8/5/2023</strong></td>
-                    <td class="text-end" style="font-size: 10px;"><strong>3 Days</strong></td>
-                </tr>
-                <tr style="font-size: 10px;">
-                    <td style="font-size: 10px;">TOTAL</td>
-                    <td class="text-end" style="font-size: 10px;"></td>
-                    <td class="text-end" style="font-size: 10px;"></td>
-                    <td class="text-end" style="font-size: 10px;"><strong>₱500</strong></td>
-                </tr>
                 <tr></tr>
             </tbody>
         </table>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap5.min.js"></script>
     <script src="assets/js/dataTables.buttons.min.js"></script>
@@ -101,6 +139,14 @@ include_once 'functions/authentication.php';
     <script src="assets/js/vanta.waves.min.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        function printPageAndRedirect() {
+            window.print();
+            setTimeout(function() {
+                window.location.href = 'index.php';
+            }, 1000); // Redirect after 1 second (adjust as needed)
+        }
+    </script>
 </body>
 
 </html>

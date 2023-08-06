@@ -44,13 +44,15 @@
             CREATE TABLE IF NOT EXISTS rentals (
               id INT PRIMARY KEY AUTO_INCREMENT,
               item_id INT,
+              transact_id INT,
               qty INT,
               price DECIMAL(10,2),
               returned DATE,
               penalty DECIMAL(10,2),
               conditions VARCHAR(255),
               created_at DATE DEFAULT CURRENT_TIMESTAMP,
-              FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE
+              FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE,
+              FOREIGN KEY (transact_id) REFERENCES transactions(id) ON DELETE CASCADE
             )
         ");
 
