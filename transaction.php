@@ -9,6 +9,10 @@ $phone = $results['phone'];
 $email  = $results['email'];
 $address = $results['address'];
 $id = $results['id'];
+
+$total = get_total_rental_item($id);
+$count = get_count_rental_items($id);
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
@@ -51,7 +55,7 @@ $id = $results['id'];
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TOTAL</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo $total; ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                             </div>
@@ -64,7 +68,7 @@ $id = $results['id'];
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TOTAL ITEMS</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>2</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo $count ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                             </div>

@@ -19,7 +19,7 @@ $customer = $result['fullname'];
 function getItems(){
     global $id;
     global $db;
-    $sql = "SELECT c.fullname, r.price, r.returned, i.name, r.created_at
+    $sql = "SELECT c.fullname, r.price, r.returned, r.qty, i.name, r.created_at
     FROM transactions t
     JOIN customers c ON t.customer_id = c.id
     JOIN rentals r ON t.id = r.transact_id
@@ -38,7 +38,7 @@ function getItems(){
             <tr class="font-monospace" style="font-size: 10px;">
                 <td class="font-monospace" style="font-size: 10px;">ITEM:&nbsp;<strong><?php echo $row['name'] ?></strong></td>
                 <td class="font-monospace text-end" style="font-size: 10px;"></td>
-                <td class="font-monospace text-center" style="font-size: 10px;"><strong><?php echo $row['created_at'] ?> - <?php echo $row['returned'] ?> |</strong>&nbsp;<?php echo $days ?> DAYS</td>
+                <td class="font-monospace text-center" style="font-size: 10px;"><strong>Qty <?php echo $row['qty'] ?> | <?php echo $row['created_at'] ?> - <?php echo $row['returned'] ?> |</strong>&nbsp;<?php echo $days ?> DAYS</td>
                 <td class="font-monospace text-end" style="font-size: 10px;"><strong>₱<?php echo $row['price'] ?></strong></td>
             </tr>
         <?php

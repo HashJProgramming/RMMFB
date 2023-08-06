@@ -33,10 +33,10 @@ include_once 'functions/view/nav-bar.php';
             </div>
         </nav>
         <div class="container-fluid">
-            <h3 class="text-dark mb-4">Sales</h3>
+            <h3 class="text-dark mb-4">Transactions & Sales</h3>
             <div class="card shadow my-5">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Transactions</p>
+                    <p class="text-primary m-0 fw-bold">Transactions List</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">

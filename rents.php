@@ -1,6 +1,7 @@
 <?php
 include_once 'functions/authentication.php';
 include_once 'functions/view/datatable.php';
+include_once 'functions/view/get-data.php';
 include_once 'functions/view/nav-bar.php';
 ?>
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ include_once 'functions/view/nav-bar.php';
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TOTAL RENTS</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>5</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_rent() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                             </div>
@@ -58,7 +59,7 @@ include_once 'functions/view/nav-bar.php';
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL LATE</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>2</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_late() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                             </div>
@@ -76,10 +77,12 @@ include_once 'functions/view/nav-bar.php';
                         <table class="table table-hover my-0" id="dataTable">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Customer</th>
                                     <th>Item</th>
                                     <th>Phone</th>
                                     <th>Address</th>
+                                    <th>Qty</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Rent Price</th>
@@ -88,28 +91,7 @@ include_once 'functions/view/nav-bar.php';
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                    <td>Gown</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2008/11/28 - 2008/11/29</td>
-                                    <td>2008/11/28</td>
-                                    <td>$162,700</td>
-                                    <td>Not yet returned</td>
-                                    <td class="text-center"><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" title="Here you can update the transaction status." href="#" data-bs-target="#return"><i class="far fa-check-circle" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" title="Here you can update the transaction details."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" title="Here you can remove the transaction."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                    <td>Shirt</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2009/10/09</td>
-                                    <td>2009/10/09</td>
-                                    <td>$1,200,000</td>
-                                    <td>1 Day Late</td>
-                                    <td class="text-center"><a data-bs-toggle="tooltip" data-bss-tooltip="" class="mx-1" title="Here you can update the transaction status." href="#"><i class="far fa-check-circle" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" title="Here you can update the transaction details."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" title="Here you can remove the transaction."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                </tr>
+                            <?php get_rent_list() ?>
                             </tbody>
                         </table>
                     </div>

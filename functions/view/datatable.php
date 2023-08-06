@@ -146,3 +146,53 @@ function transaction_item_list($id){
     <?php
     }
 }
+
+function get_rent_list(){
+    // <tr class="table-warning">
+    global $db;
+    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
+    FROM rentals r
+    JOIN transactions t ON r.transact_id = t.id
+    JOIN customers c ON t.customer_id = c.id
+    JOIN inventory i ON r.item_id = i.id
+    WHERE t.status = 'In Progress'";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    foreach ($results as $row) {
+        $status = '';
+        $daysOverdue = 0;
+        
+        if ($row['status'] == 'In Progress') {
+            $status = 'Not Yet Returned';
+        } elseif ($row['status'] == 'Returned') {
+            $status = 'Returned';
+        }
+        
+        $returnedDateTime = new DateTime($row['returned']);
+        $currentDateTime = new DateTime();
+        if ($row['status'] == 'In Progress' && $returnedDateTime < $currentDateTime) {
+            $status = 'Overdue';
+            $interval = $currentDateTime->diff($returnedDateTime);
+            $daysOverdue = $interval->days;
+        }
+        ?>
+        <tr>
+            <td><?php echo $row['transact_id'] ?></td>
+            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.png"><?php echo $row['fullname'] ?></td>
+            <td><?php echo $row['name'] ?></td>
+            <td><?php echo $row['phone'] ?></td>
+            <td><?php echo $row['address'] ?></td>
+            <td><?php echo $row['qty'] ?></td>
+            <td><?php echo $row['created_at'] ?></td>
+            <td><?php echo $row['returned'] ?></td>
+            <td><?php echo $row['price'] ?></td>
+            <td><?php echo $status ?> | <?php echo $daysOverdue ?> Days</td>
+            <td class="text-center">
+                <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['customer_id']?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>
+                <a class="mx-1" data-bs-toggle="modal" title="Here you can update the transaction status." href="#" data-bs-target="#return" data-id="<?php echo $row['customer_id']?>"><i class="far fa-check-circle" style="font-size: 20px;"></i></a>
+            </td>
+        </tr>
+    <?php
+    }
+}
