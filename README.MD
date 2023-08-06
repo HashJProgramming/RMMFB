@@ -4,8 +4,8 @@
 |:---------------------------------------------------------------------------------------------------------:|-----|-----|-----|-----|------|
 | Users Management (Staff & Customer) - View Users - Create User - Update User - Remove User                | ✅   | ✅   | ✅   | ✅   | ⭐    |
 | Inventory Management - View Items - Add Item - Update Item - Remove Item - Item Stock In - Item Stock Out | ✅   | ✅   | ✅   | ✅   | ⭐    |
-| Rental Monitoring - View Rentals not yet returned                                                         |     |     |     |     |      |
-| Sales Monitoring - View Transactions / Sales                                                              |     |     |     |     |      |
+| Rental Monitoring - View Rentals not yet returned                                                         | ✅   | ✅   | ✅   | ✅   |      |
+| Sales Monitoring - View Transactions / Sales                                                              | ✅   | ✅   | ✅   | ✅   |      |
 | Users Activity Monitoring - User Activity Log (ex: Inventory)                                             | ✅   | ✅   | ✅   | ✅   | ⭐    |
 | Generate Reports (EXCEL, PDF, PRINT)                                                                      | ✅   | ✅   | ✅   | ✅   | ⭐    |
 
