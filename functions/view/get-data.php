@@ -29,7 +29,7 @@ function get_total_rental_item($id) {
     $statement->bindParam(':id', $id);
     $statement->execute();
     $result = $statement->fetch();
-    return $result['total'];
+    return $result['total'] ?? 0;
 }
 
 function get_count_rental_items($id){
@@ -43,7 +43,7 @@ function get_count_rental_items($id){
     $statement->bindParam(':id', $id);
     $statement->execute();
     $result = $statement->fetch();
-    return $result['total'];
+    return $result['total'] ?? 0;
 }
 
 function get_total_rent(){
@@ -54,7 +54,7 @@ function get_total_rent(){
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
-    return $result['total'];
+    return $result['total'] ?? 0;
 }
 
 function get_total_late(){
@@ -66,6 +66,155 @@ function get_total_late(){
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
-    return $result['total'];
+    return $result['total'] ?? 0;
+}
+
+
+function get_total_customers(){
+    global $db;
+    $sql = "SELECT COUNT(id) AS total FROM customers";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_today_earning(){
+    global $db;
+    $sql = "SELECT SUM(price + penalty) AS total FROM rentals WHERE DATE(created_at) = CURDATE() AND conditions IS NOT NULL";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_monthly_earning(){
+    global $db;
+    $sql = "SELECT SUM(price + penalty) AS total FROM rentals WHERE MONTH(created_at) = MONTH(NOW()) AND conditions IS NOT NULL";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_yearly_earning(){
+    global $db;
+    $sql = "SELECT SUM(price + penalty) AS total FROM rentals WHERE YEAR(created_at) = YEAR(NOW()) AND conditions IS NOT NULL";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_total_borrowed(){
+    global $db;
+    $sql = "SELECT COUNT(id) AS total FROM rentals WHERE conditions IS NULL";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_total_returned(){
+    global $db;
+    $sql = "SELECT COUNT(id) AS total FROM rentals WHERE conditions IS NOT NULL";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_new_customer(){
+    global $db;
+    $sql = "SELECT COUNT(id) AS total FROM customers WHERE DATE(created_at) = CURDATE()";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function get_new_damage(){
+    global $db;
+    $sql = "SELECT COUNT(id) AS total FROM rentals WHERE DATE(created_at) = CURDATE() AND conditions > 1";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result['total'] ?? 0;
+}
+
+function daily_chart(){
+  global $db;
+  $sql = "SELECT DATE(created_at) AS date, SUM(price+penalty) AS total_sales
+    FROM rentals
+    WHERE conditions IS NOT NULL
+    GROUP BY DATE(created_at)
+    ORDER BY DATE(created_at)";
+
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+
+  $labels = [];
+  $data = [];
+  while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $date = date("M d, Y", strtotime($row['date']));
+    $labels[] = $date;
+    $data[] = $row['total_sales'];
+  }
+  $chartData = [
+    'labels' => $labels,
+    'datasets' => [
+      [
+        'label' => 'Daily Earnings',
+        'fill' => true,
+        'data' => $data,
+        'backgroundColor' => 'rgba(78, 115, 223, 0.05)',
+        'borderColor' => 'rgba(78, 115, 223, 1)'
+      ]
+    ]
+  ];
+
+  $chartDataJson = json_encode($chartData);
+  ?>
+  <canvas data-bss-chart='{"type":"line","data":<?php echo $chartDataJson; ?>,"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"},"scales":{"xAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"],"drawOnChartArea":false},"ticks":{"fontColor":"#858796","fontStyle":"normal","padding":20}}],"yAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"]},"ticks":{"fontColor":"#858796","fontStyle":"normal","padding":20}}]}}}'></canvas>
+  <?php
+}
+
+
+function month_chart(){
+  global $db;
+  $sql = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, SUM(price+penalty) AS total_sales
+  FROM rentals
+  WHERE conditions IS NOT NULL
+  GROUP BY YEAR(created_at), MONTH(created_at)
+  ORDER BY YEAR(created_at), MONTH(created_at)";
+
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+
+  $labels = [];
+  $data = [];
+  while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+  $monthName = date("M", mktime(0, 0, 0, $row['month'], 10));
+  $labels[] = $monthName . ' ' . $row['year'];
+  $data[] = $row['total_sales'];
+  }
+  $chartData = [
+  'labels' => $labels,
+  'datasets' => [
+  [
+  'label' => 'Earnings',
+  'fill' => true,
+  'data' => $data,
+  'backgroundColor' => 'rgba(78, 115, 223, 0.05)',
+  'borderColor' => 'rgba(78, 115, 223, 1)'
+  ]
+  ]
+  ];
+
+
+  $chartDataJson = json_encode($chartData);
+  ?>
+  <canvas data-bss-chart='{"type":"line","data":<?php echo $chartDataJson; ?>,"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"},"scales":{"xAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"],"drawOnChartArea":false},"ticks":{"fontColor":"#858796","fontStyle":"normal","padding":20}}],"yAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"]},"ticks":{"fontColor":"#858796","fontStyle":"normal","padding":20}}]}}}'></canvas>
+  <?php
 }
 

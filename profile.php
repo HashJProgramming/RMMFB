@@ -1,6 +1,9 @@
 <?php
 include_once 'functions/authentication.php';
 include_once 'functions/view/nav-bar.php';
+include_once 'functions/view/datatable.php';
+include_once 'functions/customer-profile.php';
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en" id="bg-animation">
@@ -33,7 +36,7 @@ include_once 'functions/view/nav-bar.php';
             </div>
         </nav>
         <div class="container-fluid">
-            <h3 class="text-dark mb-4">[CustomerName] - Profile</h3>
+            <h3 class="text-dark mb-4"><?php get_customer_fullname() ?> - Profile</h3>
             <div class="row">
                 <div class="col-md-6 col-xl-3 mb-4">
                     <div class="card shadow border-start-success py-2">
@@ -41,7 +44,7 @@ include_once 'functions/view/nav-bar.php';
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TOTAL SALES</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span>₱<?php get_sale() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                             </div>
@@ -54,7 +57,7 @@ include_once 'functions/view/nav-bar.php';
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>TOTAL&nbsp;RETURNED</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span><?php get_returned() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-folder-open fa-2x text-gray-300"></i></div>
                             </div>
@@ -67,7 +70,7 @@ include_once 'functions/view/nav-bar.php';
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>TOTAL&nbsp;BORROWED</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span><?php get_borrowed() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-folder-open fa-2x text-gray-300"></i></div>
                             </div>
@@ -80,7 +83,7 @@ include_once 'functions/view/nav-bar.php';
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
                                     <div class="text-uppercase text-danger fw-bold text-xs mb-1"><span>TOTAL BAD CONDITION</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0"><span><?php get_bad_condition() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-thumbs-down fa-2x text-gray-300"></i></div>
                             </div>
@@ -97,43 +100,21 @@ include_once 'functions/view/nav-bar.php';
                         <table class="table table-hover my-0" id="dataTable">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Customer</th>
                                     <th>Item</th>
                                     <th>Phone</th>
                                     <th>Address</th>
+                                    <th>Qty</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
-                                    <th>Condition</th>
-                                    <th>Penalty</th>
                                     <th>Rent Price</th>
+                                    <th>Condition</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                    <td>Gown</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2008/11/28</td>
-                                    <td>2008/11/28</td>
-                                    <td>Good</td>
-                                    <td>$162,700</td>
-                                    <td>$162,700</td>
-                                    <td>Returned</td>
-                                </tr>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                    <td>Shirt</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2009/10/09</td>
-                                    <td>2009/10/09</td>
-                                    <td>Very Bad</td>
-                                    <td>$1,200,000</td>
-                                    <td>$1,200,000</td>
-                                    <td>Returned</td>
-                                </tr>
+                                <?php get_customer_transaction_list() ?>
                             </tbody>
                         </table>
                     </div>

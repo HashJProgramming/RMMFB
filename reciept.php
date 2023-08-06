@@ -143,7 +143,7 @@ function getItems(){
         function printPageAndRedirect() {
             window.print();
             setTimeout(function() {
-                window.location.href = 'index.php';
+                window.location.href = 'rents.php';
             }, 1000); // Redirect after 1 second (adjust as needed)
         }
     </script>

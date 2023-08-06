@@ -156,8 +156,10 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Return Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div style="margin-top: 5px;"><label class="form-label">Item Condition</label><select class="form-select" required="">
+                    <form action="functions/item-return.php" method="post">
+                        <input type="hidden" name="data_id">
+                        <div style="margin-top: 5px;"><label class="form-label">Item Condition</label>
+                            <select class="form-select" required="" name="conditions">
                                 <optgroup label="Conditions">
                                     <option value="1" selected="">Good Condition</option>
                                     <option value="2">Bad Condition</option>
@@ -166,9 +168,10 @@ include_once 'functions/view/nav-bar.php';
                                 </optgroup>
                             </select></div>
                         <div style="margin-top: 5px;"><label class="form-label">Penalty</label><input class="form-control" type="number" name="penalty" value="0" required=""></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

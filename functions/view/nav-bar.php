@@ -19,18 +19,26 @@ function navbar(){
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'inventory.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="inventory.php" title="Here you can manage your Inventory." style="color: #393939;" ><img src="assets/img/inventory.png" width="20"> Inventory</a></li>
         <?php
         if($row){
-        ?>
-        <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'transaction.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="transaction.php" title="Here you can see your unprocess transaction." style="color: #393939;" ><img src="assets/img/clock.png" width="20"> History</a></li>
-        <?php
+            ?>
+            <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'transaction.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="transaction.php" title="Here you can see your unprocess transaction." style="color: #393939;" ><img src="assets/img/clock.png" width="20"> History</a></li>
+            <?php
         }
         ?>
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'account.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="account.php" title="Here you can manage your account." style="color: #393939;" ><img src="assets/img/avatars/avatar1.png" width="20"> My Account</a></li>
         <?php
     } elseif ($_SESSION['type'] == 'staff') {
         ?>
+        
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'rents.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="rents.php" title="Here you can Monitor the rental transactions." style="color: #393939;" ><img src="assets/img/insurance.png" width="20"> Rentals</a></li>
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'customers.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="customers.php" title="Here you can manage and view customers." style="color: #393939;" ><img src="assets/img/user.png" width="20"> Customer</a></li>
-        <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'transaction.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="transaction.php" title="Here you can see your unprocess transaction." style="color: #393939;" ><img src="assets/img/clock.png" width="20"> History</a></li>
+        <?php
+        if($row){
+            ?>
+            <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'transaction.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="transaction.php" title="Here you can see your unprocess transaction." style="color: #393939;" ><img src="assets/img/clock.png" width="20"> History</a></li>
+            <?php
+        }
+        ?>
+        <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'account.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="account.php" title="Here you can manage your account." style="color: #393939;" ><img src="assets/img/avatars/avatar1.png" width="20"> My Account</a></li>
         <?php
     }
 }

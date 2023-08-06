@@ -1,6 +1,7 @@
 <?php
 include_once 'functions/authentication.php';
 include_once 'functions/view/nav-bar.php';
+include_once 'functions/view/datatable.php';
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
@@ -43,43 +44,22 @@ include_once 'functions/view/nav-bar.php';
                         <table class="table table-hover my-0" id="dataTable">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Customer</th>
                                     <th>Item</th>
                                     <th>Phone</th>
                                     <th>Address</th>
+                                    <th>Qty</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
-                                    <th>Condition</th>
-                                    <th>Penalty</th>
                                     <th>Rent Price</th>
+                                    <th>Condition</th>
                                     <th>Status</th>
+                                    <th class="text-center">Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
-                                    <td>Gown</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2008/11/28</td>
-                                    <td>2008/11/28</td>
-                                    <td>Good</td>
-                                    <td>$162,700</td>
-                                    <td>$162,700</td>
-                                    <td>Returned</td>
-                                </tr>
-                                <tr>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg">Angelica Ramos</td>
-                                    <td>Shirt</td>
-                                    <td>000000000000</td>
-                                    <td>Address</td>
-                                    <td>2009/10/09</td>
-                                    <td>2009/10/09</td>
-                                    <td>Very Bad</td>
-                                    <td>$1,200,000</td>
-                                    <td>$1,200,000</td>
-                                    <td>Returned</td>
-                                </tr>
+                                <?php get_transaction_list() ?>
                             </tbody>
                         </table>
                     </div>
