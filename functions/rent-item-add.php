@@ -64,9 +64,13 @@ if (!$row) {
     $statement->execute();
 
     $item_qty = $row['qty'] + $qty;
-    $sql = "UPDATE rentals SET qty = :qty WHERE id = :id";
+    $item_total_price = $row['price'] + $price;
+    $sql = "UPDATE rentals SET qty = :qty, price = :price WHERE item_id = :id AND transact_id = :transact_id AND returned = :returned";
     $statement = $db->prepare($sql);
     $statement->bindParam(':qty', $item_qty);
+    $statement->bindParam(':price', $item_total_price);
+    $statement->bindParam(':transact_id', $transact_id);
+    $statement->bindParam(':returned', $returned);
     $statement->bindParam(':id', $id);
     $statement->execute();
 }

@@ -299,6 +299,8 @@ function get_customer_transaction_list(){
             $conditions = 'Very Bad';
         } elseif ($row['conditions'] == 4) {
             $conditions = 'Missing';
+        } else{
+            $conditions = 'Not yet returned';
         }
         ?>
         <tr>

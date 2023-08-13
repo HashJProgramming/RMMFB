@@ -17,6 +17,7 @@ include_once 'functions/view/nav-bar.php';
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/boutique.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/boutique.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
 </head>
@@ -125,6 +126,7 @@ include_once 'functions/view/nav-bar.php';
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap-select.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap5.min.js"></script>

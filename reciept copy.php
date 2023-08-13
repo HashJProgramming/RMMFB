@@ -35,11 +35,11 @@ function getItems(){
         $interval = $startDateObj->diff($endDateObj);
         $days = $interval->days;
         ?>
-            <tr class="font-monospace" style="font-size: 10px;">
-                <td class="font-monospace" style="font-size: 10px;">ITEM:&nbsp;<strong><?php echo $row['name'] ?></strong></td>
-                <td class="font-monospace text-end" style="font-size: 10px;"></td>
-                <td class="font-monospace text-center" style="font-size: 10px;"><strong>Qty <?php echo $row['qty'] ?> | <?php echo $row['created_at'] ?> - <?php echo $row['returned'] ?> |</strong>&nbsp;<?php echo $days ?> DAYS</td>
-                <td class="font-monospace text-end" style="font-size: 10px;"><strong>₱<?php echo $row['price'] ?></strong></td>
+            <tr class="font-monospace" style="font-size: 5px;">
+                <td class="font-monospace">ITEM:&nbsp;<strong><?php echo $row['name'] ?></strong></td>
+                <td class="font-monospace text-end" >Qty<?php echo $row['qty'] ?></td>
+                <td class="font-monospace text-center"><?php echo $days ?>Days</td>
+                <td class="font-monospace text-end"><strong>₱<?php echo $row['price'] ?></strong></td>
             </tr>
         <?php
     }
@@ -63,15 +63,32 @@ function getItems(){
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+        .font-small {
+            font-size: 8px;
+        }
+        .font-medium {
+            font-size: 6px;
+        }
+        .font-large {
+            font-size: 12px;
+        }
+    </style>
 </head>
-
-<body onload="printPageAndRedirect()">
+<body>
+<!-- <body onload="printPageAndRedirect()"> -->
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th class="font-monospace text-center" style="color: var(--bs-gray-900);font-size: 13px;">
-                    <img src="assets/img/boutique.png" width="40">&nbsp;Fashion Boutique<br>
+                    <th class="font-monospace text-center" style="color: var(--bs-gray-900);font-size: 7px;">
+                    <img src="assets/img/boutique.png" width="30">
+                    <span style="font-weight: normal !important;">Fashion Boutique</span><br>
                     <span style="font-weight: normal !important;">Cabera Street St. Barangay Balangasan, Pagadian City</span><br>
                     <span style="font-weight: normal !important;">Phone (+63) 970-081-2044</span><br>
                     <span style="font-weight: normal !important;">TRN 000 000 000 000 000</span><br>
@@ -88,7 +105,7 @@ function getItems(){
         <table class="table table-borderless">
             <thead>
                 <tr>
-                    <th class="font-monospace text-center" style="font-size: 10px;">Rental Reciept</th>
+                    <th class="font-monospace text-center" style="font-size: 6px;">Rental Reciept</th>
                 </tr>
             </thead>
             <tbody class="font-monospace">
@@ -100,11 +117,13 @@ function getItems(){
     <div class="table-responsive font-monospace">
         <table class="table table-borderless">
             <thead class="font-monospace">
-                <tr class="font-monospace">
-                    <th class="font-monospace" style="font-size: 10px;"><span style="font-weight: normal !important;">CUSTOMER: <strong><?php echo $customer; ?></strong></span></th>
-                    <th class="font-monospace text-end" style="font-size: 10px;"></th>
-                    <th class="font-monospace text-end" style="font-size: 10px;"></th>
-                    <th class="font-monospace text-end" style="font-size: 10px;">INVOICE #<?php echo $_GET['id'] ?></th>
+                <tr class="font-monospace" style="font-size: 5px;">
+                    <th class="font-monospace">
+                    <span>CUSTOMER: <strong><?php echo $customer; ?></strong></span>
+                    </th>
+                    <th class="font-monospace text-end"></th>
+                    <th class="font-monospace text-end"></th>
+                    <th class="font-monospace text-end">INVOICE #<?php echo $_GET['id'] ?></th>
                 </tr>
             </thead>
             <tbody class="font-monospace">
@@ -116,7 +135,7 @@ function getItems(){
         <table class="table">
             <thead class="font-monospace">
                 <tr class="font-monospace">
-                    <th class="font-monospace text-end"><strong>TOTAL</strong>&nbsp;<strong>₱<?php echo $total; ?></strong></th>
+                    <th class="font-monospace text-end" style="font-size: 6px;"><strong>TOTAL</strong>&nbsp;<strong>₱<?php echo $total; ?></strong></th>
                 </tr>
             </thead>
             <tbody>
