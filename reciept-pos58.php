@@ -63,22 +63,6 @@ function getItems(){
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
-    <style>
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-        }
-        .font-small {
-            font-size: 8px;
-        }
-        .font-medium {
-            font-size: 6px;
-        }
-        .font-large {
-            font-size: 12px;
-        }
-    </style>
 </head>
 <body>
 <!-- <body onload="printPageAndRedirect()"> -->
