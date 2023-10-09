@@ -7,6 +7,11 @@ $phone = $_POST['phone'];
 $email = $_POST['email'];
 $birthdate = $_POST['date'];
 
+if (date('Y') < date('Y', strtotime($birthdate))) {
+    header('Location: ../customers.php?type=error&message=Invalid birthdate!');
+    exit;
+}
+
 $sql = "SELECT * FROM customers WHERE fullname = :fullname OR phone = :phone";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':fullname', $fullname);
