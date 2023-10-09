@@ -36,12 +36,6 @@ if ($count > 0){
     
 
 if ($_POST['conditions'] > 1) {
-    $stock = $row['qty'] - $item['qty'];
-    $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
-    $statement = $db->prepare($sql);
-    $statement->bindParam(':stock', $stock);
-    $statement->bindParam(':id', $item['item_id']);
-    $statement->execute();
     generate_logs('Item Damage', $row['name'].' Stock was deducted');
     echo 'CONDITIONS: '.$_POST['conditions'].'<br>';
     echo 'ROQ QTY: '.$row['qty'].'<br>';

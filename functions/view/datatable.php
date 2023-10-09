@@ -31,6 +31,7 @@ function customer_list(){
     foreach ($results as $row) {
         ?>
              <tr>
+                <td><?php echo $row['id'] ?></td>
                 <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.png"><?php echo $row['fullname']; ?></td>
                 <td><?php echo $row['phone'] ?></td>
                 <td><?php echo $row['address'] ?></td>

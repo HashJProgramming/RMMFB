@@ -5,6 +5,11 @@ $name = $_POST['name'];
 $description = $_POST['description'];
 $qty = $_POST['qty'];
 
+if ($qty <= 0) {
+    header('Location: ../inventory.php?type=error&message=Invalid quantity!');
+    exit();
+}
+
 $sql = "SELECT * FROM inventory WHERE name = :name";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':name', $name);

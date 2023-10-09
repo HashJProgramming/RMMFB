@@ -12,7 +12,7 @@ try {
     $transaction = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($transaction) {
-        header('Location: ../rent.php?type=error&message=You have a pending transaction');
+        header('Location: ../transaction.php?type=error&message=You have a pending transaction');
         exit();
     }
 
@@ -29,7 +29,7 @@ try {
     $stmt->execute();
 
     generate_logs('Adding Transaction', $customer['fullname'].' | New transaction was added');
-    header('Location: ../rent.php?type=success&message=New transaction was added successfully');
+    header('Location: ../transaction.php?type=success&message=New transaction was added successfully');
 } catch (\Throwable $th) {
     generate_logs('Adding Transaction', $th);
 }

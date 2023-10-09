@@ -7,6 +7,7 @@ $(document).ready(function() {
 $('#dataTable').DataTable( {
     // dom: 'Blfrtip',
     dom: 'Bfrtip',
+    aaSorting: [[0, 'desc']],
     buttons: [
         
         { 

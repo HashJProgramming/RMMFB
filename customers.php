@@ -47,6 +47,7 @@ include_once 'functions/view/nav-bar.php';
                         <table class="table table-hover my-0" id="dataTable">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Customer</th>
                                     <th>Phone</th>
                                     <th>Address</th>
@@ -76,7 +77,7 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/customer-create.php" method="post">
                         <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" required="" pattern="^(?![\s.]).*$"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="email" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
@@ -97,7 +98,7 @@ include_once 'functions/view/nav-bar.php';
                     <form action="functions/customer-update.php" method="post">
                         <input type="hidden" name="data_id">
                         <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" pattern="^(?!\s).*$" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" pattern="^(?![\s.]).*$" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" pattern="^(?!\s).*$" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="email" required=""></div>
                         <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
