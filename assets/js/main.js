@@ -8,8 +8,13 @@ $('#dataTable').DataTable( {
     // dom: 'Blfrtip',
     dom: 'Bfrtip',
     aaSorting: [[0, 'desc']],
+    columnDefs: [
+        {
+            target: 0,
+            visible: false,
+            searchable: false
+        }],
     buttons: [
-        
         { 
             extend: 'excel', 
             title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
