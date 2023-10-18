@@ -64,7 +64,7 @@ function get_bad_condition(){
     FROM transactions t
     JOIN rentals r ON t.id = r.transact_id
     JOIN customers c ON t.customer_id = c.id
-    WHERE c.id = :id AND r.conditions > 1";
+    WHERE c.id = :id AND r.conditions > 1 AND r.conditions < 5";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->execute();
