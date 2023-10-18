@@ -47,7 +47,7 @@ include_once 'functions/view/get-data.php';
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TODAY EARNINGS</span></div>
                                     <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_today_earning(),2) ?></span></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ include_once 'functions/view/get-data.php';
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
                                     <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_yearly_earning(),2)  ?></span></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
                     </div>

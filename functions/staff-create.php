@@ -4,6 +4,11 @@ include_once 'connection.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+if ($username == 'admin') {
+    header('Location: ../staff.php?type=error&message=You cannot add additional administrator.');
+    exit();
+}
+
 $sql = "SELECT * FROM users WHERE username = :username";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':username', $username);

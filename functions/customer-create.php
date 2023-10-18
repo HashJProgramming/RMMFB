@@ -19,7 +19,7 @@ $stmt->bindParam(':phone', $phone);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    header('Location: ../customers.php?type=error&message='.$fullname.' is already exist or phone number is already exist');
+    header('Location: ../customers.php?type=error&message='.$fullname.' or phone number is already exist');
     exit;
 }
 

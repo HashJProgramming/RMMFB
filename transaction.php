@@ -149,7 +149,7 @@ $count = get_count_rental_items($id);
                                 </optgroup>
                             </select></div>
                         <div style="margin-top: 5px;"><label class="form-label">Quantity</label><input class="form-control" type="number" placeholder="Quantity" name="qty" required="" value="1"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" placeholder="Price" name="price" required="" value="1"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" placeholder="Price" name="price" required="" value="1" min="1"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
                     
                 </div>

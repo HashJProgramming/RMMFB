@@ -10,13 +10,14 @@ if ($qty <= 0) {
     exit();
 }
 
-$sql = "SELECT * FROM inventory WHERE name = :name";
+$sql = "SELECT * FROM inventory WHERE name = :name AND description = :description";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':name', $name);
+$stmt->bindParam(':description', $description);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    header('Location: ../inventory.php?type=error&message=Item is already taken');
+    header('Location: ../inventory.php?type=error&message=Item name and description is already exist.');
     exit;
 }
 

@@ -9,7 +9,7 @@ include_once 'functions/view/nav-bar.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sales &amp; Transactions - RMMFBS</title>
+    <title>Damage List - RMMFBS</title>
     <meta name="description" content="Rental Management and Monitoring for a Fashion Boutique">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/boutique.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/boutique.png">
@@ -36,57 +36,38 @@ include_once 'functions/view/nav-bar.php';
         </nav>
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-dark mb-0">Inventory Management</h3><button class="btn btn-dark btn-sm" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button>
+                <h3 class="text-dark mb-0">Damage Item Management</h3>
             </div>
             <div class="card shadow">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Item List</p>
+                    <p class="text-primary m-0 fw-bold">Damage Item List</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-                        <table class="table table-striped my-0" id="dataTable">
+                    <table class="table table-hover my-0" id="dataTable">
                             <thead>
                                 <tr>
-                                    <th>ID #</th>
+                                    <th>ID</th>
+                                    <th>Customer</th>
                                     <th>Item</th>
-                                    <th>Description</th>
-                                    <th>Quantity</th>
-                                    <th>Date</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Qty</th>
+                                    <th>Borrowed Date</th>
+                                    <th>Returned Date</th>
+                                    <th>Condition</th>
                                     <th class="text-center">Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                item_list();
-                                ?>
+                                <?php get_damage_transaction_list() ?>
                             </tbody>
-                            <tfoot>
-                                <tr></tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    <div class="modal fade" role="dialog" tabindex="-1" id="add">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="functions/item-create.php" method="post">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required="" value="1" min="1"></div>
-                    
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="update">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -94,44 +75,18 @@ include_once 'functions/view/nav-bar.php';
                     <h4 class="modal-title">Update Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="functions/item-update.php" method="post">
+                    <form action="functions/item-condition.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="stock-in">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Item Stock In</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="functions/item-stock-in.php" method="post">
-                        <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required="" value="1" min="1"></div>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="stock-out">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Item Stock Out</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="functions/item-stock-out.php" method="post">
-                        <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required="" value="1" min="1"></div>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Item Condition</label>
+                            <select class="form-select" required="" name="conditions">
+                                <optgroup label="Conditions">
+                                    <option value="5" selected="">Repaired</option>
+                                    <option value="6">Beyond Repair</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>

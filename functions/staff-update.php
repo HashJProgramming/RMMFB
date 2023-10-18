@@ -6,6 +6,12 @@ try {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+    
+    if ($username == 'admin') {
+        header('Location: ../staff.php?type=error&message=You cannot update a user to be administrator.');
+        exit();
+    }
+
     $sql = "UPDATE users SET username = :username, password = :password WHERE id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);

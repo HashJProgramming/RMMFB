@@ -17,6 +17,7 @@ function navbar(){
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'customers.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="customers.php" title="Here you can manage and view customers." style="color: #393939;" ><img src="assets/img/user.png" width="20"> Customer</a></li>
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'staff.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="staff.php" title="Here you can manage and view staffs." style="color: #393939;" ><img src="assets/img/user.png" width="20"> Staff</a></li>
         <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'inventory.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="inventory.php" title="Here you can manage your Inventory." style="color: #393939;" ><img src="assets/img/inventory.png" width="20"> Inventory</a></li>
+        <li class="nav-item"><a class="nav-link <?php if (strpos($_SERVER['REQUEST_URI'], 'damage.php') !== false) echo 'link-primary'; ?>" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="damage.php" title="Here you can manage your Damage Items." style="color: #393939;" ><img src="assets/img/inventory.png" width="20"> Damage List</a></li>
         <?php
         if($row){
             ?>

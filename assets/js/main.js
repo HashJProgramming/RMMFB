@@ -98,6 +98,13 @@ VANTA.WAVES({
             $('input[name="username"]').val(username);
 
         });
+      } else if (currentPath.includes("/RMMFB/damage.php")) {
+        $('a[data-bs-target="#update"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id);
+
+            $('input[name="data_id"]').val(id);
+        });
       } else if (currentPath.includes("/RMMFB/inventory.php")) {
         $('a[data-bs-target="#update"]').on('click', function() {
             var id = $(this).data('id');
