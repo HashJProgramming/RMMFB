@@ -40,108 +40,132 @@ include_once 'functions/view/get-data.php';
             </div>
             <div class="row">
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-success py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TODAY EARNINGS</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_today_earning(),2) ?></span></div>
+                    <a href="sales.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TODAY EARNINGS</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_today_earning(),2) ?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-primary py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_monthly_earning(),2)  ?></span></div>
+                    <a href="sales.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-primary py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_monthly_earning(),2)  ?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-success py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_yearly_earning(),2)  ?></span></div>
+                    <a href="sales.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span>₱<?php echo number_format(get_yearly_earning(),2)  ?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-warning py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL CUSTOMER</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_customers() ?></span></div>
+                    <a href="customers.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL CUSTOMER</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_customers() ?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-warning py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL BORROWED</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_borrowed()?></span></div>
+                    <a href="rents.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL BORROWED</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_borrowed()?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-warning py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>NEW CUSTOMER</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_new_customer()?></span></div>
+                    <a href="customers.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>NEW CUSTOMER</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_new_customer()?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-warning py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>TODAY RETURNED</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_returned()?></span></div>
+                    <a href="sales.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>TODAY RETURNED</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_returned()?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xl-3 mb-4">
-                    <div class="card shadow border-start-danger py-2">
-                        <div class="card-body">
-                            <div class="row align-items-center no-gutters">
-                                <div class="col me-2">
-                                    <div class="text-uppercase text-danger fw-bold text-xs mb-1"><span>TODAY DAMAGE</span></div>
-                                    <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_new_damage() ?></span></div>
+                    <a href="damage.php" class="text-decoration-none">
+
+                        <div class="card shadow border-start-danger py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2">
+                                        <div class="text-uppercase text-danger fw-bold text-xs mb-1"><span>TODAY DAMAGE</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_new_damage() ?></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="row">
