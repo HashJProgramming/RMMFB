@@ -30,6 +30,7 @@ $count = get_count_rental_items($id);
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="assets/css/Nunito.css">
+    <link rel="stylesheet" href="assets/css/dataTables.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
 </head>
 
