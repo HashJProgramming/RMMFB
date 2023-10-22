@@ -292,7 +292,7 @@ function get_damage_transaction_list()
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
     JOIN inventory i ON r.item_id = i.id
-    WHERE t.status = 'Returned' AND r.conditions > 1 AND r.conditions < 5";
+    WHERE t.status = 'Returned' AND r.conditions > 1 AND r.conditions < 5 AND r.conditions != 4";
     $statement = $db->prepare($sql);
     $statement->execute();
     $results = $statement->fetchAll();

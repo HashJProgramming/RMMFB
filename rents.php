@@ -171,8 +171,7 @@ include_once 'functions/view/nav-bar.php';
                                 </optgroup>
                             </select>
                         </div>
-                        <div style="margin-top: 5px;"><label class="form-label">Penalty</label><input class="form-control" type="number" name="penalty" value="0" required=""></div>
-                    
+                        <div style="margin-top: 5px;"><label class="form-label">Penalty</label><input class="form-control" type="number" name="penalty" value="0" required="" min="0"></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
