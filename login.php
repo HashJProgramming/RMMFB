@@ -24,18 +24,25 @@ if (isset($_SESSION['username'])){
 
 <body id="content-wrapper">
     <nav class="navbar navbar-expand shadow mb-4 topbar static-top navbar-light">
-        <div class="container-fluid"><a class="navbar-brand d-flex align-items-center" href="/"><span><img src="assets/img/boutique.png" width="60em">RMMFB</span></a><button class="navbar-toggler" data-bs-toggle="collapse"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+        <div class="container-fluid"><a class="navbar-brand d-flex align-items-center" href="/"><span><img src="assets/img/boutique.png" width="60em" alt="">RMMFB</span></a><button class="navbar-toggler" data-bs-toggle="collapse"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
     </nav>
     <section class="py-4 py-md-5 my-5">
         <div class="container py-md-5">
             <div class="row">
-                <div class="col-md-6 text-center"><img class="img-fluid w-80" src="assets/img/boutique.png"></div>
+                <div class="col-md-6 text-center d-none d-md-block"><img class="img-fluid w-80" src="assets/img/boutique.png" alt=""></div>
+                <div class="col-md-6 text-center d-block d-md-none"><img class="img-fluid mb-3" src="assets/img/user.png" alt=""></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="text-primary underline pb-1"><strong>Login</strong></span></h2>
                     <form action="functions/login.php" method="post" data-bs-theme="light">
-                        <div class="mb-3"><input class="form-control shadow" type="text" name="username" placeholder="Username"></div>
-                        <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Password"></div>
-                        <div class="mb-5"><button class="btn btn-primary shadow" type="submit">Log in</button></div>
+                        <div class="mb-3"><input class="form-control shadow" type="text" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>"></div>
+                        <div class="mb-3"><input class="form-control shadow" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>"></div>
+                        <div class="mb-3">
+                            <input class="form-check-input" name="remember" type="checkbox" <?php echo isset($_COOKIE['username']) ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Remember me
+                            </label>
+                        </div>
+                        <div class="mb-1"><button class="btn btn-primary w-100" type="submit">Log in</button></div>
                     </form>
                 </div>
             </div>

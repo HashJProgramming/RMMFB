@@ -50,7 +50,7 @@ include_once 'functions/view/nav-bar.php';
                                     <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>TOTAL RENTS</span></div>
                                     <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_rent() ?></span></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ include_once 'functions/view/nav-bar.php';
                                     <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>TOTAL OVERDUE</span></div>
                                     <div class="text-dark fw-bold h5 mb-0"><span><?php echo get_total_late() ?></span></div>
                                 </div>
-                                <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                <div class="col-auto"><i class="fas fa-money-bill fa-2x text-gray-300"></i></div>
                             </div>
                         </div>
                     </div>
