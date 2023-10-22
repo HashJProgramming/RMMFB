@@ -34,15 +34,15 @@ if (isset($_SESSION['username'])){
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="text-primary underline pb-1"><strong>Login</strong></span></h2>
                     <form action="functions/login.php" method="post" data-bs-theme="light">
-                        <div class="mb-3"><input class="form-control shadow" type="text" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>"></div>
-                        <div class="mb-3"><input class="form-control shadow" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>"></div>
+                        <div class="mb-3"><input class="form-control shadow text-dark" type="text" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>"></div>
+                        <div class="mb-3"><input class="form-control shadow text-dark" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>"></div>
                         <div class="mb-3">
-                            <input class="form-check-input" name="remember" type="checkbox" <?php echo isset($_COOKIE['username']) ? 'checked' : ''; ?>>
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" name="remember" type="checkbox" aria-label="remember" <?php echo isset($_COOKIE['username']) ? 'checked' : ''; ?>>
+                            <label class="form-check-label text-dark" for="remember">
                                 Remember me
                             </label>
                         </div>
-                        <div class="mb-1"><button class="btn btn-primary w-100" type="submit">Log in</button></div>
+                        <div class="mb-1"><button class="btn btn-light shadow-lg w-100 border opacity-75" type="submit">Log in</button></div>
                     </form>
                 </div>
             </div>
@@ -53,16 +53,8 @@ if (isset($_SESSION['username'])){
     <script src="assets/bootstrap/js/bootstrap-select.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
-    <script src="assets/js/dataTables.bootstrap5.min.js"></script>
-    <script src="assets/js/dataTables.buttons.min.js"></script>
-    <script src="assets/js/jszip.min.js"></script>
-    <script src="assets/js/pdfmake.min.js"></script>
     <script src="assets/js/three.min.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script src="assets/js/vfs_fonts.js"></script>
-    <script src="assets/js/buttons.html5.min.js"></script>
-    <script src="assets/js/buttons.print.min.js"></script>
-    <script src="assets/js/vanta.birds.min.js"></script>
     <script src="assets/js/vanta.waves.min.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/main.js"></script>

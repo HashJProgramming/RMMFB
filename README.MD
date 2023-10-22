@@ -25,7 +25,6 @@
 |----------|----------|
 | admin    | admin    |
 
-[![wakatime](https://wakatime.com/badge/user/d5f26215-392b-42b7-8b88-5d5a2e7e01a4/project/088b32d5-cafa-4d42-8988-7b2184c293a9.svg)](https://wakatime.com/badge/user/d5f26215-392b-42b7-8b88-5d5a2e7e01a4/project/088b32d5-cafa-4d42-8988-7b2184c293a9)
-
-![alt text](https://github.com/HashJProgramming/RMMFB/blob/Main/screenshot/1.png)
-![alt text](https://github.com/HashJProgramming/RMMFB/blob/Main/screenshot/2.png)
+## Screenshots
+![Alt text](screenshot/1.png)
+![Alt text](screenshot/2.png)
