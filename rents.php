@@ -161,7 +161,8 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/item-return.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div style="margin-top: 5px;"><label class="form-label">Item Condition</label>
+                        <div class="mb-2" style="margin-top: 5px;">
+                        <label class="form-label">Item Condition</label>
                             <select class="form-select" required="" name="conditions">
                                 <optgroup label="Conditions">
                                     <option value="1" selected="">Good Condition</option>
@@ -170,6 +171,10 @@ include_once 'functions/view/nav-bar.php';
                                     <option value="4">Missing</option>
                                 </optgroup>
                             </select>
+                        </div>
+                        <div class="mb-1">
+                            <label class="form-label">Item Quantity (for bad condition only)</label>
+                            <input type="number" name="qty" value="1" min="1" max="1"class="form-control">
                         </div>
                         <div style="margin-top: 5px;"><label class="form-label">Penalty</label><input class="form-control" type="number" name="penalty" value="0" required="" min="0"></div>
                 </div>

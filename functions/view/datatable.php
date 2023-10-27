@@ -112,8 +112,8 @@ function item_list()
             <td class="text-center">
                 <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can stock in the item." data-bs-target="#stock-in" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
                     <i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a>
-                <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can stock out the item." data-bs-target="#stock-out" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
-                    <i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a>
+                <!-- <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can stock out the item." data-bs-target="#stock-out" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
+                    <i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a> -->
                 <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can update the item." data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-description="<?php echo $row['description'] ?>">
                     <i class="far fa-edit text-warning" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can remove the item." data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
@@ -212,7 +212,7 @@ function get_rent_list()
             <td><?php echo $status ?> | <?php echo $daysOverdue ?> Days</td>
             <td class="text-center">
                 <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['customer_id'] ?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>
-                <a class="mx-1" data-bs-toggle="modal" title="Here you can update the transaction status." href="#" data-bs-target="#return" data-id="<?php echo $row['id'] ?>"><i class="far fa-check-circle" style="font-size: 20px;"></i></a>
+                <a class="mx-1" data-bs-toggle="modal" title="Here you can update the transaction status." href="#" data-bs-target="#return" data-id="<?php echo $row['id'] ?>" data-qty="<?php echo $row['qty'] ?>"><i class="far fa-check-circle" style="font-size: 20px;"></i></a>
             </td>
         </tr>
     <?php

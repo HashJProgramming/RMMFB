@@ -2,6 +2,7 @@
 include_once 'connection.php';
 
 $id = $_POST['data_id'];
+$qty = $_POST['qty'];
 $sql = "SELECT * FROM rentals WHERE id = :id";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':id', $id);
@@ -36,12 +37,23 @@ if ($count > 0){
     
 
 if ($_POST['conditions'] > 1) {
-    generate_logs('Item Damage', $row['name'].' Stock was deducted');
-    echo 'CONDITIONS: '.$_POST['conditions'].'<br>';
-    echo 'ROQ QTY: '.$row['qty'].'<br>';
-    echo 'ITEM QTY: '.$item['qty'].'<br>';
-    echo 'STOCK QTY: '.$stock.'<br>';
-    echo $item['item_id'].' '.'DEDUCTED';
+    $damage = $item['qty'] - $qty;
+
+    $sql = "UPDATE rentals SET qty = :qty WHERE id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':qty', $damage);
+    $stmt->execute();
+    generate_logs('Item Returned Damage', $row['name'].' '.$damage.' Stock was deducted');
+    $stock = $row['qty'] + $damage;
+    $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
+    $statement = $db->prepare($sql);
+    $statement->bindParam(':stock', $stock);
+    $statement->bindParam(':id', $item['item_id']);
+    $statement->execute();
+    generate_logs('Item Returned', $row['name'].' '.$stock.' Stock was added');
+    header('Location: ../rents.php?type=success&message=Item Returned!');
+    exit();
 } else {
     $stock = $row['qty'] + $item['qty'];
     $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
@@ -50,14 +62,7 @@ if ($_POST['conditions'] > 1) {
     $statement->bindParam(':id', $item['item_id']);
     $statement->execute();
     generate_logs('Item Returned', $row['name'].' Stock was added');
-    echo 'CONDITIONS: '.$_POST['conditions'].'<br>';
-    echo 'ROQ QTY: '.$row['qty'].'<br>';
-    echo 'ITEM QTY: '.$item['qty'].'<br>';
-    echo 'STOCK QTY: '.$stock.'<br>';
-    echo $item['item_id'].' '.'ADDED';
+    header('Location: ../rents.php?type=success&message=Item Returned!');
+    exit();
 }
-
-header('Location: ../rents.php?type=success&message=Item Returned!');
-exit();
-
 ?>

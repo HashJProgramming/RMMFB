@@ -136,8 +136,11 @@ VANTA.WAVES({
       }else if (currentPath.includes("/RMMFB/rents.php")) {
         $('a[data-bs-target="#return"]').on('click', function() {
             var id = $(this).data('id');
+            var qty = $(this).data('qty');
             $('input[name="data_id"]').val(id);
-            console.log(id); 
+            $('input[name="qty"]').val(qty);
+            $('input[name="qty"]').attr('max', qty);
+            console.log(id, qty); 
         });
 
         $('a[data-bs-target="#stock-in"]').on('click', function() {

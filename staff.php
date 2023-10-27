@@ -38,11 +38,11 @@ include_once 'functions/view/nav-bar.php';
         </nav>
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-dark mb-0">Customer Management</h3><button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bss-tooltip="" data-bs-placement="left" type="button" data-bs-target="#create" title="Here you can create new staff."><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Staff</button>
+                <h3 class="text-dark mb-0">Users Management</h3><button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bss-tooltip="" data-bs-placement="left" type="button" data-bs-target="#create" title="Here you can create new staff."><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Staff</button>
             </div>
             <div class="card shadow my-5">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Rental List</p>
+                    <p class="text-primary m-0 fw-bold">Users List</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">

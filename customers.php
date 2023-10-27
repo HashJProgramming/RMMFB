@@ -41,7 +41,7 @@ include_once 'functions/view/nav-bar.php';
             </div>
             <div class="card shadow my-5">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Rental List</p>
+                    <p class="text-primary m-0 fw-bold">Customer List</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
