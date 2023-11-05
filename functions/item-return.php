@@ -29,23 +29,21 @@ if ($count > 0){
     $statement->execute();
 }
 
+
+if ($_POST['conditions'] > 1) {
+    $damage = $item['qty'] - $qty;
+    $sql = "UPDATE rentals SET qty = :qty WHERE id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':qty', $qty);
+    $stmt->execute();
     $sql = "SELECT * FROM inventory WHERE id = :id";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $item['item_id']);
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-
-if ($_POST['conditions'] > 1) {
-    $damage = $item['qty'] - $qty;
-
-    $sql = "UPDATE rentals SET qty = :qty WHERE id = :id";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':qty', $damage);
-    $stmt->execute();
-    generate_logs('Item Returned Damage', $row['name'].' '.$damage.' Stock was deducted');
-    $stock = $row['qty'] + $damage;
+    generate_logs('Item Returned Damage', $row['name'].' '.$qty.' Stock was deducted');
+    $stock = $damage + $row['qty'];
     $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':stock', $stock);
