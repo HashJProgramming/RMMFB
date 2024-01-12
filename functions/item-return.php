@@ -32,16 +32,19 @@ if ($count > 0){
 
 if ($_POST['conditions'] > 1) {
     $damage = $item['qty'] - $qty;
+    
     $sql = "UPDATE rentals SET qty = :qty WHERE id = :id";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':qty', $qty);
     $stmt->execute();
+
     $sql = "SELECT * FROM inventory WHERE id = :id";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $item['item_id']);
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
     generate_logs('Item Returned Damage', $row['name'].' '.$qty.' Stock was deducted');
     $stock = $damage + $row['qty'];
     $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
@@ -49,6 +52,7 @@ if ($_POST['conditions'] > 1) {
     $statement->bindParam(':stock', $stock);
     $statement->bindParam(':id', $item['item_id']);
     $statement->execute();
+
     generate_logs('Item Returned', $row['name'].' '.$stock.' Stock was added');
     header('Location: ../rents.php?type=success&message=Item Returned!');
     exit();

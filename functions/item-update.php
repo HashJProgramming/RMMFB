@@ -4,6 +4,7 @@ include_once 'connection.php';
 $id = $_POST['data_id'];
 $name = $_POST['name'];
 $description = $_POST['description'];
+$price = $_POST['price'];
 
 $sql = "SELECT * FROM inventory WHERE name = :name AND description = :description AND id != :id";
 $stmt = $db->prepare($sql);
@@ -20,11 +21,13 @@ if ($stmt->rowCount() > 0) {
 $sql = "UPDATE inventory SET
         name = :name,
         description = :description
+        price = :price
         WHERE id = :id";
         
 $statement = $db->prepare($sql);
 $statement->bindParam(':name', $name);
 $statement->bindParam(':description', $description);
+$statement->bindParam(':price', $price);
 $statement->bindParam(':id', $id);
 $statement->execute();
 

@@ -4,11 +4,10 @@ session_start();
 $transact_id = $_POST['id'];
 $id = $_POST['item'];
 $qty = $_POST['qty'];
-$price = $_POST['price'];
-$returned =$_POST['date'];
+$returned = $_POST['date'];
 $returned_timestamp = strtotime($returned);
 $current_timestamp = time();
-
+$days = floor(($returned_timestamp - $current_timestamp) / 86400);
 if ($returned_timestamp < $current_timestamp) {
     header('Location: ../transaction.php?type=error&message=Return date must be greater than the current date.');
     exit;
@@ -37,9 +36,11 @@ $stmt->bindParam(':transact_id', $transact_id);
 $stmt->bindParam(':item_id', $id);
 $stmt->bindParam(':returned', $returned);
 $stmt->execute();
+
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$row) {
     $stock = $inventory_row['qty'] - $qty;
+    $item_total_price = ($inventory_row['price'] * $qty) * $days;
     $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':stock', $stock);
@@ -50,7 +51,7 @@ if (!$row) {
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':item_id', $id);
     $stmt->bindParam(':transact_id', $transact_id);
-    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':price', $item_total_price);
     $stmt->bindParam(':returned', $returned);
     $stmt->bindParam(':qty', $qty);
     $stmt->execute();
@@ -64,7 +65,7 @@ if (!$row) {
     $statement->execute();
 
     $item_qty = $row['qty'] + $qty;
-    $item_total_price = $row['price'] + $price;
+    $item_total_price = $row['price'] + ($inventory_row['price'] * $qty) * $days;
     $sql = "UPDATE rentals SET qty = :qty, price = :price WHERE item_id = :id AND transact_id = :transact_id AND returned = :returned";
     $statement = $db->prepare($sql);
     $statement->bindParam(':qty', $item_qty);

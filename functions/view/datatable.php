@@ -108,13 +108,14 @@ function item_list()
             <td><?php echo $row['name'] ?></td>
             <td><?php echo $row['description'] ?></td>
             <td><?php echo $row['qty'] ?></td>
+            <td><?php echo $row['price'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td class="text-center">
                 <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can stock in the item." data-bs-target="#stock-in" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
                     <i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a>
                 <!-- <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can stock out the item." data-bs-target="#stock-out" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
                     <i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a> -->
-                <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can update the item." data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-description="<?php echo $row['description'] ?>">
+                <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can update the item." data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-description="<?php echo $row['description'] ?>" data-price="<?php echo $row['price'] ?>">
                     <i class="far fa-edit text-warning" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="#" data-bss-tooltip="" title="Here you can remove the item." data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id'] ?>">
                     <i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
@@ -138,7 +139,7 @@ function items()
             <option value="<?php echo $row['id'] ?>" <?php if (!$select) {
                                                             echo 'selected';
                                                             $select = true;
-                                                        } ?>><?php echo $row['name'] ?> | Qty: <?php echo $row['qty'] ?></option>
+                                                        } ?>><?php echo $row['name'] ?> | Qty: <?php echo $row['qty'] ?> | Price: ₱<?php echo $row['price'] ?></option>
         <?php
         }
     }
@@ -292,7 +293,7 @@ function get_damage_transaction_list()
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
     JOIN inventory i ON r.item_id = i.id
-    WHERE t.status = 'Returned' AND r.conditions > 1 AND r.conditions < 5 AND r.conditions != 4";
+    WHERE t.status = 'Returned' AND r.conditions > 1 AND r.conditions < 5";
     $statement = $db->prepare($sql);
     $statement->execute();
     $results = $statement->fetchAll();

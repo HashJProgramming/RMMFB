@@ -115,9 +115,11 @@ VANTA.WAVES({
             var id = $(this).data('id');
             var name = $(this).data('name');
             var description = $(this).data('description');
+            var price = $(this).data('price');
             $('input[name="data_id"]').val(id);
             $('input[name="name"]').val(name);
             $('input[name="description"]').val(description);
+            $('input[name="price"]').val(price);
             console.log(id); 
             $('input[name="data_id"]').val(id);
         });

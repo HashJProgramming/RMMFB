@@ -122,6 +122,7 @@ include_once 'functions/view/nav-bar.php';
             </div>
         </div>
     </div>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="update">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -139,6 +140,7 @@ include_once 'functions/view/nav-bar.php';
             </div>
         </div>
     </div>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="remove">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -152,6 +154,7 @@ include_once 'functions/view/nav-bar.php';
             </div>
         </div>
     </div>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="return">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -173,16 +176,18 @@ include_once 'functions/view/nav-bar.php';
                             </select>
                         </div>
                         <div class="mb-1">
-                            <label class="form-label">Item Quantity (for bad condition only)</label>
+                            <label class="form-label">Item Quantity (for damage item only)</label>
                             <input type="number" name="qty" value="1" min="1" max="1"class="form-control">
                         </div>
-                        <div style="margin-top: 5px;"><label class="form-label">Penalty</label><input class="form-control" type="number" name="penalty" value="0" required="" min="0"></div>
+                       
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
-    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap-select.min.js"></script>

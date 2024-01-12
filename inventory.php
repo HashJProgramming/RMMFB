@@ -52,6 +52,7 @@ include_once 'functions/view/nav-bar.php';
                                     <th>Item</th>
                                     <th>Description</th>
                                     <th>Quantity</th>
+                                    <th>Price</th>
                                     <th>Date</th>
                                     <th class="text-center">Option</th>
                                 </tr>
@@ -81,9 +82,10 @@ include_once 'functions/view/nav-bar.php';
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required="" value="1" min="1"></div>
-                    
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" value="1" min="1"></div>
+                        
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -99,6 +101,7 @@ include_once 'functions/view/nav-bar.php';
                         <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" value="1" min="1"></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
