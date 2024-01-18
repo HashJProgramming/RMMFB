@@ -19,29 +19,41 @@ $inventory_row = $stmt->fetch(PDO::FETCH_ASSOC);
 $inventory_qty = $inventory_row['qty'];
 
 if ($qty <= $rental_qty) {
+    $new_rental_qty;
     if ($conditions == 6) {
         $new_rental_qty = $rental_qty - $qty;
+        $sql = "UPDATE rentals SET qty = :new_rental_qty WHERE id = :id";
+        $statement = $db->prepare($sql);
+        $statement->bindParam(':new_rental_qty', $new_rental_qty);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        
     } else {
         $stock = $inventory_qty + $qty;
         $new_rental_qty = $rental_qty - $qty;
-
-        if ($new_rental_qty == 0) {
-            $conditions = 3;
-        }
 
         $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
         $statement = $db->prepare($sql);
         $statement->bindParam(':stock', $stock);
         $statement->bindParam(':id', $rental_row['item_id']);
         $statement->execute();
-    }
 
-    $sql = "UPDATE rentals SET qty = :new_rental_qty, conditions = :conditions WHERE id = :id";
-    $statement = $db->prepare($sql);
-    $statement->bindParam(':new_rental_qty', $new_rental_qty);
-    $statement->bindParam(':conditions', $conditions);
-    $statement->bindParam(':id', $id);
-    $statement->execute();
+        $sql = "UPDATE rentals SET qty = :new_rental_qty WHERE id = :id";
+        $statement = $db->prepare($sql);
+        $statement->bindParam(':new_rental_qty', $new_rental_qty);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+
+    }
+    
+    if ($rental_qty == $qty) { 
+        $set_conditions = 3;
+        $sql = "UPDATE rentals SET conditions = :conditions WHERE id = :id";
+        $statement = $db->prepare($sql);
+        $statement->bindParam(':conditions', $set_conditions);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+    }
 
     generate_logs('Repaired Rental Item', $qty . ' Stock was returned');
     header('Location: ../damage.php?type=success&message=Item was repaired successfully');

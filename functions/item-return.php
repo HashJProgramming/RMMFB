@@ -22,6 +22,12 @@ $stmt->bindParam(':id', $item['transact_id']);
 $stmt->execute();
 $count = $stmt->fetchColumn();
 
+$sql = "SELECT * FROM inventory WHERE id = :id";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':id', $item['item_id']);
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 if ($count > 0){
     $sql = "UPDATE transactions SET status = 'Returned' WHERE id = :id";
     $statement = $db->prepare($sql);
@@ -39,14 +45,8 @@ if ($_POST['conditions'] > 1) {
     $stmt->bindParam(':qty', $qty);
     $stmt->execute();
 
-    $sql = "SELECT * FROM inventory WHERE id = :id";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':id', $item['item_id']);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
     generate_logs('Item Returned Damage', $row['name'].' '.$qty.' Stock was deducted');
-    $stock = $damage + $row['qty'];
+    $stock = $row['qty'] + $damage;
     $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':stock', $stock);
@@ -57,7 +57,7 @@ if ($_POST['conditions'] > 1) {
     header('Location: ../rents.php?type=success&message=Item Returned!');
     exit();
 } else {
-    $stock = $row['qty'] + $item['qty'];
+    $stock = $item['qty'] + $row['qty'] ;
     $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':stock', $stock);
