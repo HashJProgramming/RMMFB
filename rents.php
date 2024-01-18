@@ -169,14 +169,12 @@ include_once 'functions/view/nav-bar.php';
                             <select class="form-select" required="" name="conditions">
                                 <optgroup label="Conditions">
                                     <option value="1" selected="">Good Condition</option>
-                                    <option value="2">Bad Condition</option>
-                                    <option value="3">Very Bad Condition</option>
-                                    <option value="4">Missing</option>
+                                    <option value="2">Damage / Missing</option>
                                 </optgroup>
                             </select>
-                        </div>
+                        </div>  
                         <div class="mb-1">
-                            <label class="form-label">Item Quantity (for damage item only)</label>
+                            <label class="form-label">Item Quantity (for damage or missing item only)</label>
                             <input type="number" name="qty" value="1" min="1" max="1"class="form-control">
                         </div>
                        

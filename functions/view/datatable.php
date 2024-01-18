@@ -288,12 +288,20 @@ function get_transaction_list()
 function get_damage_transaction_list()
 {
     global $db;
+    $filter = $_GET['filter'] ?? 'all';
     $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.conditions, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
     FROM rentals r
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
     JOIN inventory i ON r.item_id = i.id
-    WHERE t.status = 'Returned' AND r.conditions > 1 AND r.conditions < 5";
+    WHERE t.status = 'Returned'";
+
+    if ($filter === 'settle') {
+        $sql .= " AND r.conditions = 3";
+    } elseif ($filter === 'all') {
+        $sql .= " AND r.conditions = 2";
+    }
+
     $statement = $db->prepare($sql);
     $statement->execute();
     $results = $statement->fetchAll();
@@ -302,15 +310,9 @@ function get_damage_transaction_list()
         if ($row['conditions'] == 1) {
             $conditions = 'Good';
         } elseif ($row['conditions'] == 2) {
-            $conditions = 'Bad';
+            $conditions = 'Damage / Missing';
         } elseif ($row['conditions'] == 3) {
-            $conditions = 'Very Bad';
-        } elseif ($row['conditions'] == 4) {
-            $conditions = 'Missing';
-        } elseif ($row['conditions'] == 5) {
-            $conditions = 'Repaired';
-        } elseif ($row['conditions'] == 6) {
-            $conditions = 'Beyond Repair';
+            $conditions = 'Settled';
         }
 
     ?>
