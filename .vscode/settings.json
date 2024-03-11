@@ -1,0 +1,28 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "192.168.20.101",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ZDSMC (Official)",
+            "database": "his_zds_mod",
+            "password": "zdsmc-123456",
+            "username": "postgres"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "127.0.0.1",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "ZDSMC Local",
+            "database": "rmmfb",
+            "username": "hash",
+            "password": "hashjprogramming"
+        }
+    ]
+}

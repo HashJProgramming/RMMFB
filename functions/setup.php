@@ -1,6 +1,8 @@
 <?php
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
     $database = 'rmmfb';
-    $db = new PDO('mysql:host=localhost', 'root', '');
+    $db = new PDO('mysql:host=localhost', 'hash', 'hashjprogramming');
     $query = "CREATE DATABASE IF NOT EXISTS $database";
 
     try {

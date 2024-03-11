@@ -148,7 +148,7 @@ function items()
 function transaction_item_list($id)
 {
     global $db;
-    $sql = 'SELECT t.id, i.name, t.qty, t.price, t.returned,  t.item_id
+    $sql = 'SELECT t.id, i.name, t.qty, i.price, t.returned,  t.item_id
     FROM inventory i 
     INNER JOIN rentals t ON i.id = t.item_id WHERE t.transact_id = :id';
     $stmt = $db->prepare($sql);

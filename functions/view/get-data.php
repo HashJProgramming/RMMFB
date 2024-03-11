@@ -20,10 +20,11 @@ function get_customer_data() {
 
 function get_total_rental_item($id) {
     global $db;
-    $sql = "SELECT SUM(r.price) AS total, c.fullname 
+    $sql = "SELECT SUM(i.price * r.qty) AS total, c.fullname 
     FROM transactions t
     JOIN rentals r ON t.id = r.transact_id
     JOIN customers c ON t.customer_id = c.id
+    JOIN inventory i ON r.item_id = i.id
     WHERE t.id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
