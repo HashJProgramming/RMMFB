@@ -34,7 +34,7 @@ function get_returned(){
     FROM transactions t
     JOIN rentals r ON t.id = r.transact_id
     JOIN customers c ON t.customer_id = c.id
-    WHERE c.id = :id AND r.conditions IS NOT NULL";
+    WHERE c.id = :id AND r.qty = r.item_return";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->execute();
@@ -49,7 +49,7 @@ function get_borrowed(){
     FROM transactions t
     JOIN rentals r ON t.id = r.transact_id
     JOIN customers c ON t.customer_id = c.id
-    WHERE c.id = :id AND r.conditions IS NULL";
+    WHERE c.id = :id AND r.qty > r.item_return";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->execute();
@@ -60,11 +60,11 @@ function get_borrowed(){
 function get_bad_condition(){
     global $db;
     global $id;
-    $sql = "SELECT COUNT(r.id) AS total
+    $sql = "SELECT SUM(r.item_damage) AS total
     FROM transactions t
     JOIN rentals r ON t.id = r.transact_id
     JOIN customers c ON t.customer_id = c.id
-    WHERE c.id = :id AND r.conditions > 1 AND r.conditions < 5";
+    WHERE c.id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->execute();

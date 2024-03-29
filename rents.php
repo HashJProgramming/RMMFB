@@ -178,6 +178,10 @@ include_once 'functions/view/nav-bar.php';
                             <label class="form-label">Item Quantity (for damage or missing item only)</label>
                             <input type="number" name="qty" value="1" min="1" max="1"class="form-control">
                         </div>
+                        <div class="mb-1">
+                            <label class="form-label">Penalty (for damage or late item returned)</label>
+                            <input type="number" name="penalty" value="0" min="0" class="form-control">
+                        </div>
                        
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>

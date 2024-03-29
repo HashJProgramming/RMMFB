@@ -54,6 +54,7 @@ include_once 'functions/view/datatable.php';
                                     <th>Qty</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
+                                    <th>Penalty</th>
                                     <th>Rent Price</th>
                                     <th class="text-center">Option</th>
                                 </tr>

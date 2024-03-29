@@ -244,6 +244,7 @@ function get_transaction_list()
             <td><?php echo $row['qty'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
+            <td>₱<?php echo $row['penalty'] ?></td>
             <td>₱<?php echo $row['price'] ?></td>
             <td class="text-center">
                 <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['customer_id'] ?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>
@@ -302,38 +303,6 @@ function get_customer_transaction_list()
     $statement->execute();
     $results = $statement->fetchAll();
     foreach ($results as $row) {
-        $status = '';
-        $daysOverdue = 0;
-
-        if ($row['status'] == 'In Progress') {
-            $status = 'Not Yet Returned';
-        } elseif ($row['status'] == 'Returned') {
-            $status = 'Returned';
-        }
-
-        $returnedDateTime = new DateTime($row['returned']);
-        $currentDateTime = new DateTime();
-        if ($row['status'] == 'In Progress' && $returnedDateTime < $currentDateTime) {
-            $status = 'Overdue';
-            $interval = $currentDateTime->diff($returnedDateTime);
-            $daysOverdue = $interval->days;
-        }
-
-        if ($row['conditions'] == 1) {
-            $conditions = 'Good';
-        } elseif ($row['conditions'] == 2) {
-            $conditions = 'Bad';
-        } elseif ($row['conditions'] == 3) {
-            $conditions = 'Very Bad';
-        } elseif ($row['conditions'] == 4) {
-            $conditions = 'Missing';
-        } elseif ($row['conditions'] == 5) {
-            $conditions = 'Repaired';
-        } elseif ($row['conditions'] == 6) {
-            $conditions = 'Beyond Repair';
-        } else {
-            $conditions = 'Not yet returned';
-        }
     ?>
         <tr>
             <td><?php echo $row['transact_id'] ?></td>
@@ -345,8 +314,6 @@ function get_customer_transaction_list()
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
             <td>₱<?php echo $row['price'] ?></td>
-            <td><?php echo $conditions ?></td>
-            <td><?php echo $status ?> | <?php echo $daysOverdue ?> Days</td>
         </tr>
 <?php
     }

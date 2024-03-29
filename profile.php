@@ -83,7 +83,7 @@ include_once 'functions/customer-profile.php';
                         <div class="card-body">
                             <div class="row align-items-center no-gutters">
                                 <div class="col me-2">
-                                    <div class="text-uppercase text-danger fw-bold text-xs mb-1"><span>TOTAL BAD CONDITION</span></div>
+                                    <div class="text-uppercase text-danger fw-bold text-xs mb-1"><span>TOTAL DAMAGE</span></div>
                                     <div class="text-dark fw-bold h5 mb-0"><span><?php get_bad_condition() ?></span></div>
                                 </div>
                                 <div class="col-auto"><i class="fas fa-thumbs-down fa-2x text-gray-300"></i></div>
@@ -110,8 +110,6 @@ include_once 'functions/customer-profile.php';
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Rent Price</th>
-                                    <th>Condition</th>
-                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>

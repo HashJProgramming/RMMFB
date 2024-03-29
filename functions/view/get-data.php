@@ -82,7 +82,7 @@ function get_total_customers(){
 
 function get_today_earning(){
     global $db;
-    $sql = "SELECT SUM(price + COALESCE(penalty, 0)) AS total FROM rentals WHERE DATE(created_at) = CURDATE() AND conditions > 0";
+    $sql = "SELECT SUM(price + COALESCE(penalty, 0)) AS total FROM rentals WHERE DATE(created_at) = CURDATE()";
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
@@ -91,7 +91,7 @@ function get_today_earning(){
 
 function get_monthly_earning(){
     global $db;
-    $sql = "SELECT SUM(price + COALESCE(penalty, 0)) AS total FROM rentals WHERE MONTH(created_at) = MONTH(NOW()) AND conditions > 0";
+    $sql = "SELECT SUM(price + COALESCE(penalty, 0)) AS total FROM rentals WHERE MONTH(created_at) = MONTH(NOW())";
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
@@ -100,7 +100,7 @@ function get_monthly_earning(){
 
 function get_yearly_earning(){
     global $db;
-    $sql = "SELECT SUM(price + COALESCE(penalty, 0)) AS total FROM rentals WHERE YEAR(created_at) = YEAR(NOW()) AND conditions > 0";
+    $sql = "SELECT SUM(price + COALESCE(penalty, 0)) AS total FROM rentals WHERE YEAR(created_at) = YEAR(NOW())";
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
@@ -118,7 +118,7 @@ function get_total_borrowed(){
 
 function get_total_returned(){
     global $db;
-    $sql = "SELECT COUNT(id) AS total FROM rentals WHERE conditions > 0";
+    $sql = "SELECT COUNT(id) AS total FROM rentals WHERE qty = item_return";
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
@@ -136,7 +136,7 @@ function get_new_customer(){
 
 function get_new_damage(){
     global $db;
-    $sql = "SELECT COUNT(id) AS total FROM rentals WHERE DATE(created_at) = CURDATE() AND conditions > 1";
+    $sql = "SELECT SUM(item_damage) AS total FROM rentals WHERE DATE(created_at) = CURDATE()";
     $statement = $db->prepare($sql);
     $statement->execute();
     $result = $statement->fetch();
@@ -147,7 +147,6 @@ function daily_chart(){
   global $db;
   $sql = "SELECT DATE(created_at) AS date, SUM(price + COALESCE(penalty, 0)) AS total_sales
     FROM rentals
-    WHERE conditions > 0
     GROUP BY DATE(created_at)
     ORDER BY DATE(created_at)";
 
@@ -185,7 +184,6 @@ function month_chart(){
   global $db;
   $sql = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, SUM(price + COALESCE(penalty, 0)) AS total_sales
   FROM rentals
-  WHERE conditions > 0
   GROUP BY YEAR(created_at), MONTH(created_at)
   ORDER BY YEAR(created_at), MONTH(created_at)";
 

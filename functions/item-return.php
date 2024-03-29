@@ -3,6 +3,7 @@ include_once 'connection.php';
 
 $id = $_POST['data_id'];
 $qty = $_POST['qty'];
+$penalty = $_POST['penalty'];
 
 $sql = "SELECT * FROM rentals WHERE id = :id";
 $stmt = $db->prepare($sql);
@@ -38,12 +39,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 if ($_POST['conditions'] > 1) {
-    $sql = "UPDATE rentals SET item_return = item_return + :qty, item_damage = item_damage + :qty WHERE id = :id";
+    $sql = "UPDATE rentals SET item_return = item_return + :qty, item_damage = item_damage + :qty, penalty =  penalty + :penalty WHERE id = :id";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':qty', $qty);
+    $stmt->bindParam(':penalty', $penalty);
     $stmt->execute();
-    
+
     // $stock = $row['qty'] - $qty;
 
     // $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
@@ -57,10 +59,11 @@ if ($_POST['conditions'] > 1) {
     exit();
 } else {
 
-    $sql = "UPDATE rentals SET item_return = item_return + :qty WHERE id = :id";
+    $sql = "UPDATE rentals SET item_return = item_return + :qty, penalty =  penalty + :penalty WHERE id = :id";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':qty', $qty);
+    $stmt->bindParam(':penalty', $penalty);
     $stmt->execute();
 
     $stock = $row['qty'] + $qty;
