@@ -79,10 +79,10 @@ include_once 'functions/view/nav-bar.php';
                 </div>
                 <div class="modal-body">
                     <form action="functions/item-create.php" method="post">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required="" value="1" min="1"></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" value="1" min="1"></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" required="" value="1" min="1"></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Price</strong></label><input class="form-control" type="number" name="price" required="" value="1" min="1"></div>
                         
                     </div>
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -99,9 +99,9 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/item-update.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" placeholder="Item Description" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" value="1" min="1"></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Description</strong></label><input class="form-control" type="text" name="description" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Price</strong></label><input class="form-control" type="number" name="price" required="" value="1" min="1"></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
@@ -117,7 +117,7 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/item-stock-in.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required="" value="1" min="1"></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" required="" value="1" min="1"></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
@@ -133,7 +133,7 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/item-stock-out.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required="" value="1" min="1"></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" required="" value="1" min="1"></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>

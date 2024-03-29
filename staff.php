@@ -75,8 +75,8 @@ include_once 'functions/view/nav-bar.php';
                 </div>
                 <div class="modal-body">
                     <form action="functions/staff-create.php" method="post">
-                        <div style="margin-top: 5px;"><label class="form-label">Username</label><input class="form-control" type="text" placeholder="Username" name="username" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Password</label><input class="form-control" type="password" placeholder="Password" name="password" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Username</label><input class="form-control" type="text" name="username" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Password</label><input class="form-control" type="password" name="password" required="" pattern="^(?!\s).*$"></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
@@ -92,8 +92,8 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/staff-update.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div style="margin-top: 5px;"><label class="form-label">Username</label><input class="form-control" type="text" placeholder="Username" name="username" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Password</label><input class="form-control" type="password" placeholder="Password" name="password" required="" pattern="^(?!\s).*$"></div>                        
+                        <div style="margin-top: 5px;"><label class="form-label">Username</label><input class="form-control" type="text" name="username" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Password</label><input class="form-control" type="password" name="password" required="" pattern="^(?!\s).*$"></div>                        
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>

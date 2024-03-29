@@ -131,9 +131,9 @@ include_once 'functions/view/nav-bar.php';
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div style="margin-top: 5px;"><label class="form-label">Item</label><input class="form-control" type="text" placeholder="Item" name="item" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" placeholder="Price" name="price" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Item Name</label><input class="form-control" type="text" name="item" required="" pattern="^(?!\s).*$"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Rental Price</label><input class="form-control" type="number" name="price" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" name="date" type="date" required=""></div>
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>

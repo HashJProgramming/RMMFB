@@ -149,8 +149,8 @@ $count = get_count_rental_items($id);
                                     <?php items() ?>
                                 </optgroup>
                             </select></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Quantity</label><input class="form-control" type="number" placeholder="Quantity" name="qty" required="" value="1"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Quantity</label><input class="form-control" type="number" name="qty" required="" value="1"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" name="date" type="date" required=""></div>
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -167,7 +167,7 @@ $count = get_count_rental_items($id);
                 <div class="modal-body">
                     <form action="functions/rent-item-update.php" method="post">
                     <input type="hidden" name="data_id">
-                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Rental Return Date</label><input class="form-control" name="date" type="date" required=""></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
