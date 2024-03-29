@@ -178,7 +178,7 @@ function get_rent_list()
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
     JOIN inventory i ON r.item_id = i.id
-    WHERE t.status = 'In Progress' AND r.penalty IS NULL";
+    WHERE t.status = 'In Progress' AND r.penalty = 0";
     $statement = $db->prepare($sql);
     $statement->execute();
     $results = $statement->fetchAll();
@@ -228,7 +228,7 @@ function get_transaction_list()
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
     JOIN inventory i ON r.item_id = i.id
-    WHERE t.status = 'Returned' OR r.penalty IS NOT NULL";
+    WHERE t.status = 'Returned'";
     $statement = $db->prepare($sql);
     $statement->execute();
     $results = $statement->fetchAll();

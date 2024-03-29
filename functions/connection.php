@@ -1,6 +1,5 @@
 <?php
 include_once 'setup.php';
-$db = new PDO('mysql:host=localhost;dbname=' . $database, 'hash', 'hashjprogramming');
 
 if (!$db) {
     die("Connection failed: " . $db->connect_error);

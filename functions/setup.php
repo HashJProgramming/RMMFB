@@ -2,7 +2,8 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
     $database = 'rmmfb';
-    $db = new PDO('mysql:host=localhost', 'hash', 'hashjprogramming');
+    // $db = new PDO('mysql:host=localhost', 'hash', 'hashjprogramming');
+    $db = new PDO('mysql:host=localhost', 'root', '');
     $query = "CREATE DATABASE IF NOT EXISTS $database";
 
     try {
@@ -63,7 +64,7 @@
           qty INT,
           price DECIMAL(10,2),
           returned DATE,
-          penalty DECIMAL(10,2),
+          penalty DECIMAL(10,2) DEFAULT 0,
           conditions VARCHAR(255),
           created_at DATE DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE,
@@ -98,5 +99,4 @@
     } catch(PDOException $e) {
         die("Error creating database: " . $e->getMessage());
     }
-    $db = null;
 ?>

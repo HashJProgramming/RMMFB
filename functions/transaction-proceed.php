@@ -1,6 +1,7 @@
 <?php
 include_once 'connection.php';
 $id = $_POST['id'];
+$price = $_POST['price'];
 
     $sql = "SELECT COUNT(r.id) AS total, c.fullname 
     FROM transactions t
@@ -17,9 +18,16 @@ if($result['total'] == 0){
     exit;
 }
 
+$sql = "UPDATE rentals SET price = :price WHERE id = :id";
+$statement = $db->prepare($sql);
+$statement->bindParam(':id', $id);
+$statement->bindParam(':price', $price);
+$statement->execute();
+
 $sql = "UPDATE transactions SET status = 'In Progress' WHERE id = :id";
 $statement = $db->prepare($sql);
 $statement->bindParam(':id', $id);
 $statement->execute();
+
 
 header("Location: ../reciept.php?id=$id");

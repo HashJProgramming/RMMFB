@@ -23,6 +23,20 @@
             "database": "rmmfb",
             "username": "hash",
             "password": "hashjprogramming"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Hash Local",
+            "database": "rmmfb",
+            "username": "root",
+            "password": ""
         }
     ]
 }

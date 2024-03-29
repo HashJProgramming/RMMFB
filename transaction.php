@@ -217,6 +217,7 @@ $count = get_count_rental_items($id);
                 </div>
                 <form action="functions/transaction-proceed.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id ?>">
+                <input type="hidden" name="price" value="<?php echo $total ?>">
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
