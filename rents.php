@@ -85,6 +85,7 @@ include_once 'functions/view/nav-bar.php';
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Qty</th>
+                                    <th>Returned</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Rent Price</th>

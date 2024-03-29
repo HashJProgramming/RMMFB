@@ -2,6 +2,10 @@
 include_once 'functions/authentication.php';
 include_once 'functions/view/datatable.php';
 include_once 'functions/view/nav-bar.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" id="bg-animation" lang="en">
@@ -77,11 +81,11 @@ include_once 'functions/view/nav-bar.php';
                 </div>
                 <div class="modal-body">
                     <form action="functions/customer-create.php" method="post">
-                        <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" required="" pattern="^(?![\s.]).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="email" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna) </label><input class="form-control" type="text" name="name" required="" pattern="^(?!\s).*$" value="<?=$_SESSION['c_fullname'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text"  name="address" required="" pattern="^(?![\s.]).*$" value="<?=$_SESSION['c_address'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text"  name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11" value="<?=$_SESSION['c_phone'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" name="email" required="" value="<?=$_SESSION['c_email'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" name="date" type="date" required="" value="<?=$_SESSION['c_birthdate'] ?? '' ?>"></div>
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -98,11 +102,11 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/customer-update.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" placeholder="Customer Fullanme" name="name" required="" pattern="^(?!\s).*$"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text" placeholder="Permanent Address" name="address" pattern="^(?![\s.]).*$" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text" placeholder="Phone Contact No." name="phone" pattern="^(?!\s).*$" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" placeholder="Email Address" name="email" required=""></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" placeholder="Item" name="date" type="date" required=""></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" name="name" required="" pattern="^(?!\s).*$" value="<?=$_SESSION['c_fullname'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text"  name="address" required="" pattern="^(?![\s.]).*$" value="<?=$_SESSION['c_address'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text"  name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11" value="<?=$_SESSION['c_phone'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" name="email" required="" value="<?=$_SESSION['c_email'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" name="date" type="date" required="" value="<?=$_SESSION['c_birthdate'] ?? '' ?>"></div>
                    
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>

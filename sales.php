@@ -55,8 +55,6 @@ include_once 'functions/view/datatable.php';
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Rent Price</th>
-                                    <th>Condition</th>
-                                    <th>Status</th>
                                     <th class="text-center">Option</th>
                                 </tr>
                             </thead>

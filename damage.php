@@ -38,17 +38,6 @@ include_once 'functions/view/nav-bar.php';
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
                 <h3 class="text-dark mb-0">Damage Management</h3>
-                    <?php
-                        if(!isset($_GET['filter'])){
-                            ?>
-                                <a class="btn btn-dark btn-sm" type="button" href="damage.php?filter=settle" data-bss-tooltip="" title="Here you can view the settled records." data-bs-target="#add"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Filter Settled</a>
-                            <?php
-                        }else{
-                            ?>
-                                <a class="btn btn-dark btn-sm" type="button" href="damage.php" data-bss-tooltip="" title="Here you can view the unsettled records." data-bs-target="#add"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Filter Unsettled</a>
-                            <?php
-                        }
-                    ?>
             </div>
             <div class="card shadow">
                 <div class="card-header py-3">
@@ -62,12 +51,11 @@ include_once 'functions/view/nav-bar.php';
                                     <th>ID</th>
                                     <th>Customer</th>
                                     <th>Item</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Qty</th>
-                                    <th>Borrowed Date</th>
-                                    <th>Returned Date</th>
-                                    <th>Condition</th>
+                                    <th>Damage Qty</th>
+                                    <th>Repaired Qty</th>
+                                    <th>Beyond Repair Qty</th>
+                                    <th>Penalty</th>
+                                    <th>Date</th>
                                     <th class="text-center">Option</th>
                                 </tr>
                             </thead>

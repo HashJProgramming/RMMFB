@@ -66,6 +66,10 @@
           returned DATE,
           penalty DECIMAL(10,2) DEFAULT 0,
           conditions VARCHAR(255),
+          item_return INT DEFAULT 0,
+          item_damage INT DEFAULT 0,
+          item_repaired INT DEFAULT 0,
+          item_beyond_repair INT DEFAULT 0,
           created_at DATE DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (item_id) REFERENCES inventory(id) ON DELETE CASCADE,
           FOREIGN KEY (transact_id) REFERENCES transactions(id) ON DELETE CASCADE

@@ -139,9 +139,10 @@ $('#dataTable').DataTable( {
         $('a[data-bs-target="#return"]').on('click', function() {
             var id = $(this).data('id');
             var qty = $(this).data('qty');
+            var item_return = $(this).data('item_return');
             $('input[name="data_id"]').val(id);
-            $('input[name="qty"]').val(qty);
-            $('input[name="qty"]').attr('max', qty);
+            $('input[name="qty"]').val(qty - item_return);
+            $('input[name="qty"]').attr('max', qty - item_return);
             console.log(id, qty); 
         });
 
