@@ -24,7 +24,7 @@ function get_sale(){
     $statement->bindParam(':id', $id);
     $statement->execute();
     $result = $statement->fetch();
-    echo $result['total'] ?? 0;
+    echo number_format($result['total'] ?? 0, 2);
 }
 
 function get_returned(){

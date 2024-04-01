@@ -20,7 +20,7 @@ if ($stmt->rowCount() > 0) {
 
 $sql = "UPDATE inventory SET
         name = :name,
-        description = :description
+        description = :description,
         price = :price
         WHERE id = :id";
         

@@ -224,7 +224,7 @@ function get_rent_list()
 function get_transaction_list()
 {
     global $db;
-    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.conditions, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
+    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.conditions, r.item_damage, r.item_repaired, r.item_beyond_repair, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
     FROM rentals r
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
@@ -242,10 +242,14 @@ function get_transaction_list()
             <td><?php echo $row['phone'] ?></td>
             <td><?php echo $row['address'] ?></td>
             <td><?php echo $row['qty'] ?></td>
+            <td><?php echo $row['qty'] - $row['item_damage'] ?></td>
+            <td><?php echo $row['item_damage'] ?></td>
+            <td><?php echo $row['item_repaired'] ?></td>
+            <td><?php echo $row['item_beyond_repair'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
-            <td>₱<?php echo $row['penalty'] ?></td>
-            <td>₱<?php echo $row['price'] ?></td>
+            <td>₱<?php echo number_format($row['penalty'] , 2) ?></td>
+            <td>₱<?php echo number_format($row['price'] ,) ?></td>
             <td class="text-center">
                 <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['customer_id'] ?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>
             </td>
@@ -313,7 +317,7 @@ function get_customer_transaction_list()
             <td><?php echo $row['qty'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
-            <td>₱<?php echo $row['price'] ?></td>
+            <td>₱<?php echo number_format($row['price'], 2) ?></td>
         </tr>
 <?php
     }

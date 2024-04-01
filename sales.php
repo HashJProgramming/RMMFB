@@ -52,6 +52,10 @@ include_once 'functions/view/datatable.php';
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Qty</th>
+                                    <th>Returned</th>
+                                    <th>Damage</th>
+                                    <th>Repaired</th>
+                                    <th>Beyond Repair</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Penalty</th>
