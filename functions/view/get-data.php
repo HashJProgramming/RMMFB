@@ -2,7 +2,7 @@
 include_once 'functions/connection.php';
 function get_customer_data() {
     global $db;
-    $sql = 'SELECT t.id, c.fullname, c.phone, c.email, c.address
+    $sql = 'SELECT t.id, c.fullname, c.phone, c.facebook, c.address
     FROM customers c
     JOIN transactions t ON c.id = t.customer_id
     WHERE t.user_id = :user_id AND t.status = "pending"

@@ -6,16 +6,16 @@ try {
     $fullname = $_POST['name'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
-    $email = $_POST['email'];
+    $facebook = $_POST['facebook'];
     $birthdate = $_POST['date'];
 
-    $sql = "UPDATE customers SET fullname = :fullname, address = :address, phone = :phone, email = :email, birthdate = :birthdate WHERE id = :id";
+    $sql = "UPDATE customers SET fullname = :fullname, address = :address, phone = :phone, facebook = :facebook, birthdate = :birthdate WHERE id = :id";
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->bindParam(':fullname', $fullname);
     $statement->bindParam(':address', $address);
     $statement->bindParam(':phone', $phone);
-    $statement->bindParam(':email', $email);
+    $statement->bindParam(':facebook', $facebook);
     $statement->bindParam(':birthdate', $birthdate);
     $statement->execute();
 

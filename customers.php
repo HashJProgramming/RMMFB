@@ -56,7 +56,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                     <th>Customer</th>
                                     <th>Phone</th>
                                     <th>Address</th>
-                                    <th>Email Address</th>
+                                    <th>Facebook</th>
                                     <th>Birthdate</th>
                                     <th>Date</th>
                                     <th class="text-center">Option</th>
@@ -84,7 +84,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna) </label><input class="form-control" type="text" name="name" required="" pattern="^(?!\s).*$" value="<?=$_SESSION['c_fullname'] ?? '' ?>"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text"  name="address" required="" pattern="^(?![\s.]).*$" value="<?=$_SESSION['c_address'] ?? '' ?>"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text"  name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11" value="<?=$_SESSION['c_phone'] ?? '' ?>"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" name="email" required="" value="<?=$_SESSION['c_email'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Facebook</label><input class="form-control" type="text" name="facebook" required="" value="<?=$_SESSION['c_facebook'] ?? '' ?>"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" name="date" type="date" required="" value="<?=$_SESSION['c_birthdate'] ?? '' ?>"></div>
                     
                 </div>
@@ -105,7 +105,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div style="margin-top: 5px;"><label class="form-label">Fullname (ex. Juan Luna)</label><input class="form-control" type="text" name="name" required="" pattern="^(?!\s).*$" value="<?=$_SESSION['c_fullname'] ?? '' ?>"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Address</label><input class="form-control" type="text"  name="address" required="" pattern="^(?![\s.]).*$" value="<?=$_SESSION['c_address'] ?? '' ?>"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Phone</label><input class="form-control" type="text"  name="phone" required="" pattern="[0-9]+" minlength="11" maxlength="11" value="<?=$_SESSION['c_phone'] ?? '' ?>"></div>
-                        <div style="margin-top: 5px;"><label class="form-label">Email</label><input class="form-control" type="email" name="email" required="" value="<?=$_SESSION['c_email'] ?? '' ?>"></div>
+                        <div style="margin-top: 5px;"><label class="form-label">Facebook</label><input class="form-control" type="text" name="facebook" required="" value="<?=$_SESSION['c_facebook'] ?? '' ?>"></div>
                         <div style="margin-top: 5px;"><label class="form-label">Birthdate</label><input class="form-control" name="date" type="date" required="" value="<?=$_SESSION['c_birthdate'] ?? '' ?>"></div>
                    
                 </div>

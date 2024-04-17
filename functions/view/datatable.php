@@ -37,12 +37,12 @@ function customer_list()
             <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.png"><?php echo $row['fullname']; ?></td>
             <td><?php echo $row['phone'] ?></td>
             <td><?php echo $row['address'] ?></td>
-            <td><?php echo $row['email'] ?></td>
+            <td><?php echo $row['facebook'] ?></td>
             <td><?php echo $row['birthdate'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td class="text-center">
                 <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['id'] ?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>
-                <a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" data-id="<?php echo $row['id'] ?>" data-fullname="<?php echo $row['fullname'] ?>" data-address="<?php echo $row['address'] ?>" data-phone="<?php echo $row['phone'] ?>" data-email="<?php echo $row['email'] ?>" data-birthdate="<?php echo $row['birthdate'] ?>" title="Here you can update the customer Information."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a>
+                <a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#update" data-id="<?php echo $row['id'] ?>" data-fullname="<?php echo $row['fullname'] ?>" data-address="<?php echo $row['address'] ?>" data-phone="<?php echo $row['phone'] ?>" data-facebook="<?php echo $row['facebook'] ?>" data-birthdate="<?php echo $row['birthdate'] ?>" title="Here you can update the customer Information."><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a>
                 <!-- <a data-bs-toggle="modal" data-bss-tooltip="" class="mx-1" href="#" data-bs-target="#remove" data-id="<?php echo $row['id'] ?>" title="Here you can remove the customer."><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a> -->
             </td>
         </tr>
@@ -173,7 +173,7 @@ function transaction_item_list($id)
 function get_rent_list()
 {
     global $db;
-    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.item_return, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
+    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.item_return, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id, t.event
     FROM rentals r
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
@@ -211,6 +211,7 @@ function get_rent_list()
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
             <td>₱<?php echo $row['price'] ?></td>
+            <td><?php echo $row['event'] ?></td>
             <td><?php echo $status ?> | <?php echo $daysOverdue ?> Days</td>
             <td class="text-center">
                 <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['customer_id'] ?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>

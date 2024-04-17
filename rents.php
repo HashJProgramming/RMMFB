@@ -89,6 +89,7 @@ include_once 'functions/view/nav-bar.php';
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Rent Price</th>
+                                    <th>Event</th>
                                     <th>Status</th>
                                     <th class="text-center">Option</th>
                                 </tr>
@@ -116,6 +117,9 @@ include_once 'functions/view/nav-bar.php';
                                 <?php customers() ?>
                                 </optgroup>
                             </select>
+                        </div>
+                        <div style="margin-top: 5px;"><label class="form-label">Event</label>
+                            <input class="form-control" type="text" name="event">
                         </div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>

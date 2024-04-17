@@ -27,7 +27,7 @@
               fullname VARCHAR(255),
               address VARCHAR(255),
               phone VARCHAR(255),
-              email VARCHAR(255),
+              facebook VARCHAR(255),
               birthdate DATE,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
@@ -50,6 +50,7 @@
               customer_id int,
               user_id int,
               status VARCHAR(255),
+              event VARCHAR(255),
               created_at DATE DEFAULT CURRENT_TIMESTAMP,
               FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE,
               FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE

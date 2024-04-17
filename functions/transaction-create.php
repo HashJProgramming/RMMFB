@@ -3,6 +3,7 @@ include_once 'connection.php';
 session_start();
 try {
     $customer_id = $_POST['id'];
+    $event = $_POST['event'];
     $user_id = $_SESSION['id'];
 
     $sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 'Pending'";
@@ -22,9 +23,10 @@ try {
     $stmt->execute();
     $customer = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $sql = "INSERT INTO transactions (customer_id, user_id, status) VALUES (:customer_id, :user_id, 'Pending')";
+    $sql = "INSERT INTO transactions (customer_id, user_id, event, status) VALUES (:customer_id, :user_id, :event, 'Pending')";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':customer_id', $customer_id);
+    $stmt->bindParam(':event', $event);
     $stmt->bindParam(':user_id', $user_id);
     $stmt->execute();
 
