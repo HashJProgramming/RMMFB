@@ -110,6 +110,7 @@ include_once 'functions/customer-profile.php';
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Rent Price</th>
+                                    <th>Total Price</th>
                                 </tr>
                             </thead>
                             <tbody>

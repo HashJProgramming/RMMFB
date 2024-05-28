@@ -25,7 +25,7 @@ include_once 'functions/view/datatable.php';
 
 <body id="page-top">
     <div id="content">
-    <nav class="navbar navbar-expand-lg mb-4 shadow navbar-light">
+        <nav class="navbar navbar-expand-lg mb-4 shadow navbar-light">
             <div class="container-fluid"><img src="assets/img/boutique.png" width="60em"><a class="navbar-brand d-flex align-items-center" href="/"><span>RMMFB</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div id="navcol-1" class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
@@ -43,7 +43,7 @@ include_once 'functions/view/datatable.php';
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                        <table class="table table-hover my-0 w-100" id="dataTable">
+                        <table class="table table-hover table-bordered my-0 w-100" id="dataTable" class="display" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -53,13 +53,11 @@ include_once 'functions/view/datatable.php';
                                     <th>Address</th>
                                     <th>Qty</th>
                                     <th>Returned</th>
-                                    <th>Damage</th>
-                                    <th>Repaired</th>
-                                    <th>Beyond Repair</th>
                                     <th>Borrowed Date</th>
                                     <th>Returned Date</th>
                                     <th>Penalty</th>
                                     <th>Rent Price</th>
+                                    <th colspan="3" class="text-center">Damages</th>
                                     <th class="text-center">Option</th>
                                 </tr>
                             </thead>
@@ -89,7 +87,49 @@ include_once 'functions/view/datatable.php';
     <script src="assets/js/vanta.birds.min.js"></script>
     <script src="assets/js/vanta.waves.min.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script>
+        $('#dataTable').DataTable({
+            // dom: 'Blfrtip',
+            dom: 'Bfrtip',
+            aaSorting: [
+                [0, 'desc']
+            ],
+            "ordering": false,
+            columnDefs: [{
+                target: 0,
+                visible: false,
+                searchable: false
+            }],
+
+            buttons: [{
+                    extend: 'excel',
+                    title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique',
+                    className: 'btn btn-primary',
+                    text: '<i class="fa fa-file-excel"></i> EXCEL'
+                },
+                {
+                    extend: 'pdf',
+                    title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique',
+                    className: 'btn btn-primary',
+                    text: '<i class="fa fa-file-pdf"></i> PDF'
+                },
+                {
+                    extend: 'print',
+                    className: 'btn btn-primary',
+                    text: '<i class="fa fa-print"></i> Print',
+                    title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique',
+                    autoPrint: true,
+                    customize: function(win) {
+                        $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+                        $(win.document.body).find('tr:nth-child(odd) td').each(function(index) {
+                            $(this).css('background-color', '#D0D0D0');
+                        });
+                        $(win.document.body).find('h1').css('text-align', 'center');
+                    }
+                }
+            ]
+        });
+    </script>
 </body>
 
 </html>

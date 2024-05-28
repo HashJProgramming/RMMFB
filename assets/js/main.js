@@ -14,6 +14,7 @@ $('#dataTable').DataTable( {
             visible: false,
             searchable: false
         }],
+        
     buttons: [
         { 
             extend: 'excel', 
@@ -33,9 +34,6 @@ $('#dataTable').DataTable( {
             text: '<i class="fa fa-print"></i> Print',
             title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
             autoPrint: true,
-            exportOptions: {
-                columns: ':visible',
-            },
             customize: function (win) {
                 $(win.document.body).find('table').addClass('display').css('font-size', '9px');
                 $(win.document.body).find('tr:nth-child(odd) td').each(function(index){

@@ -173,7 +173,7 @@ function transaction_item_list($id)
 function get_rent_list()
 {
     global $db;
-    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.item_return, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id, t.event
+    $sql = "SELECT r.id, i.name, r.qty, (i.price * r.qty) AS price, r.returned, r.penalty, r.item_return, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id, t.event
     FROM rentals r
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
@@ -210,7 +210,7 @@ function get_rent_list()
             <td><?php echo $row['item_return'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
-            <td>₱<?php echo $row['price'] ?></td>
+            <td>₱<?php echo number_format($row['price'], 2) ?></td>
             <td><?php echo $row['event'] ?></td>
             <td><?php echo $status ?> | <?php echo $daysOverdue ?> Days</td>
             <td class="text-center">
@@ -244,16 +244,36 @@ function get_transaction_list()
             <td><?php echo $row['address'] ?></td>
             <td><?php echo $row['qty'] ?></td>
             <td><?php echo $row['qty'] - $row['item_damage'] ?></td>
-            <td><?php echo $row['item_damage'] ?></td>
-            <td><?php echo $row['item_repaired'] ?></td>
-            <td><?php echo $row['item_beyond_repair'] ?></td>
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
             <td>₱<?php echo number_format($row['penalty'] , 2) ?></td>
-            <td>₱<?php echo number_format($row['price'] ,) ?></td>
+            <td>₱<?php echo number_format($row['price'] , 2) ?></td>
+            <td class="text-center">Damage</td>
+            <td class="text-center">Repaired</td>
+            <td class="text-center">UnRepaired</td>
+            <!-- <td class="text-center"><span class="badge bg-primary">Damage</span></td>
+            <td class="text-center"><span class="badge bg-success">Repaired</span></td>
+            <td class="text-center"><span class="badge bg-danger">UnRepaired</span></td> -->
             <td class="text-center">
                 <a data-bss-tooltip="" class="mx-1" href="profile.php?id=<?php echo $row['customer_id'] ?>" title="Here you can see the customer transactions."><i class="far fa-eye text-primary" style="font-size: 20px;"></i></a>
             </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center"><?php echo $row['item_damage'] ?></td>
+            <td class="text-center"><?php echo $row['item_repaired'] ?></td>
+            <td class="text-center"><?php echo $row['item_beyond_repair'] ?></td>
+            <td></td>
         </tr>
     <?php
     }
@@ -296,7 +316,7 @@ function get_damage_transaction_list()
 function get_customer_transaction_list()
 {
     global $db;
-    $sql = "SELECT r.id, i.name, r.qty, r.price, r.returned, r.penalty, r.conditions, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
+    $sql = "SELECT r.id, i.name, r.qty, i.price , (i.price * r.qty) AS total_price, r.returned, r.penalty, r.conditions, r.created_at, t.status, c.fullname, c.phone, c.address, c.id as customer_id, t.id as transact_id
     FROM rentals r
     JOIN transactions t ON r.transact_id = t.id
     JOIN customers c ON t.customer_id = c.id
@@ -319,6 +339,7 @@ function get_customer_transaction_list()
             <td><?php echo $row['created_at'] ?></td>
             <td><?php echo $row['returned'] ?></td>
             <td>₱<?php echo number_format($row['price'], 2) ?></td>
+            <td>₱<?php echo number_format($row['total_price'], 2) ?></td>
         </tr>
 <?php
     }

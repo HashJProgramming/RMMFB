@@ -38,7 +38,7 @@ include_once 'functions/view/nav-bar.php';
         </nav>
         <div class="container-fluid">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-dark mb-0">Rental Management</h3><button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bss-tooltip="" data-bs-placement="left" type="button" data-bs-target="#create" title="Here you can create new transaction."><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Transaction</button>
+                <h3 class="text-dark mb-0">Rental Management</h3><button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bss-tooltip="" data-bs-placement="left" type="button" data-bs-target="#create" title="Here you can create new transaction."><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Rental</button>
             </div>
 
             <div class="row">
@@ -76,7 +76,7 @@ include_once 'functions/view/nav-bar.php';
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                        <table class="table table-hover my-0 w-100" id="dataTable">
+                        <table class="table table-hover table-bordered my-0 w-100" id="dataTable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -107,7 +107,7 @@ include_once 'functions/view/nav-bar.php';
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Create Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    <h4 class="modal-title">Create Rental</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form action="functions/transaction-create.php" method="post">

@@ -6,7 +6,7 @@ include_once 'functions/view/get-data.php';
 $results = get_customer_data();
 $fullname = $results['fullname'];
 $phone = $results['phone'];
-$email  = $results['email'];
+$email  = $results['facebook'];
 $address = $results['address'];
 $id = $results['id'];
 
@@ -125,7 +125,7 @@ $count = get_count_rental_items($id);
                             <form>
                                 <div class="mb-3"><label class="form-label" for="first_name"><strong>Fullname: </strong><strong><?php echo $fullname ?></strong></label></div>
                                 <div class="mb-3"><label class="form-label" for="last_name"><strong>Phone: </strong><strong><?php echo $phone ?></strong></div>
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Email: </strong><strong><?php echo $email ?></strong></div>
+                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Facebook: </strong><strong><?php echo $email ?></strong></div>
                                 <div class="mb-3"><label class="form-label" for="last_name"><strong>Address: </strong><strong><?php echo $address ?></strong></div>  
                             </form>
                         </div>

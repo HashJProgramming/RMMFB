@@ -49,7 +49,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                        <table class="table table-hover my-0 w-100" id="dataTable">
+                        <table class="table table-hover table-bordered my-0 w-100" id="dataTable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
