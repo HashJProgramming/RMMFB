@@ -169,6 +169,7 @@ include_once 'functions/view/nav-bar.php';
                 <div class="modal-body">
                     <form action="functions/item-return.php" method="post">
                         <input type="hidden" name="data_id">
+                        <input type="hidden" name="total_qty">
                         <div class="mb-2" style="margin-top: 5px;">
                         <label class="form-label">Item Condition</label>
                             <select class="form-select" required="" name="conditions">

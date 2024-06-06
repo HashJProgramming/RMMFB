@@ -2,7 +2,13 @@
 include_once 'connection.php';
 
 $id = $_POST['data_id'];
+
+$total_qty = $_POST['total_qty'];
 $qty = $_POST['qty'];
+if ($qty <= 0 || $qty > $total_qty) {
+    header('Location: ../rents.php?type=error&message=Quantity is not valid!');
+    exit();
+}
 $penalty = $_POST['penalty'];
 
 $sql = "SELECT * FROM rentals WHERE id = :id";
@@ -11,18 +17,6 @@ $stmt->bindParam(':id', $id);
 $stmt->execute();
 $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// $sql = "UPDATE rentals SET penalty = penalty + :penalty, conditions = :conditions WHERE id = :id";
-// $statement = $db->prepare($sql);
-// $statement->bindParam(':penalty', $_POST['penalty']);
-// $statement->bindParam(':conditions', $_POST['conditions']);
-// $statement->bindParam(':id', $id);
-// $statement->execute();
-
-// $sql = "SELECT COUNT(*) FROM rentals WHERE transact_id = :id";
-// $stmt = $db->prepare($sql);
-// $stmt->bindParam(':id', $item['transact_id']);
-// $stmt->execute();
-// $count = $stmt->fetchColumn();
 
 $sql = "SELECT * FROM inventory WHERE id = :id";
 $stmt = $db->prepare($sql);
@@ -30,12 +24,6 @@ $stmt->bindParam(':id', $item['item_id']);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// if ($count > 0){
-//     $sql = "UPDATE transactions SET status = 'Returned' WHERE id = :id";
-//     $statement = $db->prepare($sql);
-//     $statement->bindParam(':id', $item['transact_id']);
-//     $statement->execute();
-// }
 
 
 if ($_POST['conditions'] > 1) {
@@ -45,14 +33,6 @@ if ($_POST['conditions'] > 1) {
     $stmt->bindParam(':qty', $qty);
     $stmt->bindParam(':penalty', $penalty);
     $stmt->execute();
-
-    // $stock = $row['qty'] - $qty;
-
-    // $sql = "UPDATE inventory SET qty = :stock WHERE id = :id";
-    // $statement = $db->prepare($sql);
-    // $statement->bindParam(':stock', $stock);
-    // $statement->bindParam(':id', $item['item_id']);
-    // $statement->execute();
     
     generate_logs('Item Returned Damage', $row['name'].' '.$qty.' Stock was deducted');
     header('Location: ../rents.php?type=success&message=Item Returned!');

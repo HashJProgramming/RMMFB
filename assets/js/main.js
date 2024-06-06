@@ -141,6 +141,7 @@ VANTA.WAVES({
             $('input[name="data_id"]').val(id);
             $('input[name="qty"]').val(qty - item_return);
             $('input[name="qty"]').attr('max', qty - item_return);
+            $('input[name="total_qty"]').val(qty - item_return);
             console.log(id, qty); 
         });
 
