@@ -120,6 +120,9 @@ include_once 'functions/view/datatable.php';
                     title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique',
                     autoPrint: true,
                     customize: function(win) {
+                        var table = $(win.document.body).find('table');
+                        table.prepend('<thead><tr><th colspan="15" style="text-align: right;" id="dateTimeHeader"> Date: ' + new Date().toLocaleString() + '</th></tr></thead>');
+                        
                         $(win.document.body).find('table').addClass('display').css('font-size', '9px');
                         $(win.document.body).find('tr:nth-child(odd) td').each(function(index) {
                             $(this).css('background-color', '#D0D0D0');

@@ -4,46 +4,50 @@ $(document).ready(function() {
     const type = urlParams.get('type');
     const message = urlParams.get('message');
 
-$('#dataTable').DataTable( {
-    // dom: 'Blfrtip',
-    dom: 'Bfrtip',
-    aaSorting: [[0, 'desc']],
-    columnDefs: [
-        {
-            target: 0,
-            visible: false,
-            searchable: false
-        }],
-        
-    buttons: [
-        { 
-            extend: 'excel', 
-            title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
-            className: 'btn btn-primary',
-            text: '<i class="fa fa-file-excel"></i> EXCEL'
-        },
-        {
-            extend: 'pdf',
-            title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
-            className: 'btn btn-primary',
-            text: '<i class="fa fa-file-pdf"></i> PDF'
-        },
-        { 
-            extend: 'print', 
-            className: 'btn btn-primary',
-            text: '<i class="fa fa-print"></i> Print',
-            title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
-            autoPrint: true,
-            customize: function (win) {
-                $(win.document.body).find('table').addClass('display').css('font-size', '9px');
-                $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
-                    $(this).css('background-color','#D0D0D0');
-                });
-                $(win.document.body).find('h1').css('text-align','center');
+    $('#dataTable').DataTable({
+        dom: 'Bfrtip',
+        aaSorting: [[0, 'desc']],
+        columnDefs: [
+            {
+                targets: 0,
+                visible: false,
+                searchable: false
             }
-        }
-    ]
-} );
+        ],
+        buttons: [
+            { 
+                extend: 'excel', 
+                title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
+                className: 'btn btn-primary',
+                text: '<i class="fa fa-file-excel"></i> EXCEL'
+            },
+            {
+                extend: 'pdf',
+                title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
+                className: 'btn btn-primary',
+                text: '<i class="fa fa-file-pdf"></i> PDF'
+            },
+            { 
+                extend: 'print', 
+                className: 'btn btn-primary',
+                text: '<i class="fa fa-print"></i> Print',
+                title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
+                autoPrint: true,
+                customize: function (win) {
+                    // Find the table in the printed document
+                    var table = $(win.document.body).find('table');
+                    table.prepend('<thead><tr><th colspan="13" style="text-align: right;" id="dateTimeHeader"> Date: ' + new Date().toLocaleString() + '</th></tr></thead>');
+
+                    // Adjust the header and other styles for printing
+                    $(win.document.body).find('table').addClass('display').css('font-size', '9px');
+                    $(win.document.body).find('tr:nth-child(odd) td').each(function(index){
+                        $(this).css('background-color','#D0D0D0');
+                    });
+                    $(win.document.body).find('h1').css('text-align','center');
+                }
+            }
+        ]
+    });
 
 VANTA.WAVES({
     el: "#bg-animation",
