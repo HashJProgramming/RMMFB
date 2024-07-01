@@ -19,13 +19,35 @@ $(document).ready(function() {
                 extend: 'excel', 
                 title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
                 className: 'btn btn-primary',
-                text: '<i class="fa fa-file-excel"></i> EXCEL'
+                text: '<i class="fa fa-file-excel"></i> EXCEL',
+                messageTop: function() {
+                    return 'Date: ' + new Date().toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit'
+                        }) + ' ' +
+                        new Date().toLocaleTimeString('en-US', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                },
             },
             {
                 extend: 'pdf',
                 title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique', 
                 className: 'btn btn-primary',
-                text: '<i class="fa fa-file-pdf"></i> PDF'
+                text: '<i class="fa fa-file-pdf"></i> PDF',
+                messageTop: function() {
+                    return 'Date: ' + new Date().toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit'
+                        }) + ' ' +
+                        new Date().toLocaleTimeString('en-US', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                }
             },
             { 
                 extend: 'print', 

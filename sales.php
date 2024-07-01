@@ -105,13 +105,35 @@ include_once 'functions/view/datatable.php';
                     extend: 'excel',
                     title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique',
                     className: 'btn btn-primary',
-                    text: '<i class="fa fa-file-excel"></i> EXCEL'
+                    text: '<i class="fa fa-file-excel"></i> EXCEL',
+                    messageTop: function() {
+                        return 'Date: ' + new Date().toLocaleString('en-US', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit'
+                            }) + ' ' +
+                            new Date().toLocaleTimeString('en-US', {
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            });
+                    },
                 },
                 {
                     extend: 'pdf',
                     title: 'RMMFB - Rental Management and Monitoring for a Fashion Boutique',
                     className: 'btn btn-primary',
-                    text: '<i class="fa fa-file-pdf"></i> PDF'
+                    text: '<i class="fa fa-file-pdf"></i> PDF',
+                    messageTop: function() {
+                        return 'Date: ' + new Date().toLocaleString('en-US', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit'
+                            }) + ' ' +
+                            new Date().toLocaleTimeString('en-US', {
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            });
+                    }
                 },
                 {
                     extend: 'print',
@@ -122,7 +144,7 @@ include_once 'functions/view/datatable.php';
                     customize: function(win) {
                         var table = $(win.document.body).find('table');
                         table.prepend('<thead><tr><th colspan="15" style="text-align: right;" id="dateTimeHeader"> Date: ' + new Date().toLocaleString() + '</th></tr></thead>');
-                        
+
                         $(win.document.body).find('table').addClass('display').css('font-size', '9px');
                         $(win.document.body).find('tr:nth-child(odd) td').each(function(index) {
                             $(this).css('background-color', '#D0D0D0');
